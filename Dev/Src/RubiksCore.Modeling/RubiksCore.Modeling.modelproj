@@ -33,6 +33,13 @@
       <SubType>Content</SubType>
       <DependentUpon>RubiksCore.classdiagram</DependentUpon>
     </Content>
+    <Content Include="RubiksCore_Move.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="RubiksCore_Move.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>RubiksCore_Move.sequencediagram</DependentUpon>
+    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\RubiksCore.Modeling.uml">
       <SubType>Content</SubType>

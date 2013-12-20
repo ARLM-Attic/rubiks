@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="e5084595-83dc-482a-8eb0-77a92ae7fd89" name="RubiksCore" linkedPackageId="dc9cd2de-8298-4f17-b73e-b2cfd5ff4deb" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="e5084595-83dc-482a-8eb0-77a92ae7fd89" name="RubiksCore" linkedPackageId="dc9cd2de-8298-4f17-b73e-b2cfd5ff4deb" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="b922bd60-2af6-492e-8cb3-973742be6528" name="RubiksCube" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -409,6 +409,34 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="8b32054e-5d46-42f8-8e3a-c4369ed322b3" name="DetermineNewPositionForCubie" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f47d31ee-9a42-42f1-88bc-c95dc51178d3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="5517121d-3d73-4e42-80a4-c2ceb800438d" name="Cubie cubie" direction="In" isUnique="false">
+                  <elementDefinition Id="37e5fed0-9f21-4925-98d7-f95313d3575b" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3b148460-b5cc-45ba-9f8b-bbf7996def67" name="RubiksDirection rotatingFace" direction="In" isUnique="false">
+                  <elementDefinition Id="a8bd7c09-2029-424a-a983-d6be083b9719" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="fd13dea3-58d1-4cac-98d6-1bb7964dbf8e" name="TurningDirection turningDirection" direction="In" isUnique="false">
+                  <elementDefinition Id="6a86b226-da06-46ed-858f-0dd510724f01" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7fa5185c-38db-46e2-ae47-4790319f148c" direction="Return">
+                  <elementDefinition Id="0b931275-74f2-4a26-9cb2-d1abb146c827" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="3d6d49e9-93bc-4308-a2d0-17eafc5747df" LastKnownName="Postion" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -708,6 +736,11 @@
     <packageHasNamedElement>
       <referencedType Id="c4244b80-ef6b-4ce7-acf6-e8b0507bbc59" name="IEnumerable&lt;Cubie&gt;" isAbstract="false" isLeaf="false" cachedFullName="IEnumerable&lt;Cubie&gt;">
         <elementDefinition Id="9f52b1f1-f7e9-4771-b831-2967809cc3b1" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="3d6d49e9-93bc-4308-a2d0-17eafc5747df" name="Postion" isAbstract="false" isLeaf="false" cachedFullName="RubiksCore.Modeling::Postion">
+        <elementDefinition Id="6751e165-51c3-4861-ac3d-3414e6fc06c4" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
