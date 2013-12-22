@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CubeFace.cs" />
     <Compile Include="Cubie.cs" />
     <Compile Include="Enumerations.cs" />
     <Compile Include="ICubieConfigurator.cs" />
