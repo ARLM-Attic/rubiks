@@ -56,6 +56,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RubiksCubeTest.cs" />
+    <Compile Include="SolvedPuzzleCubieConfiguratorTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RubiksCore\RubiksCore.csproj">
+      <Project>{151dc531-e471-4ab7-a1af-a3fbb3f162d5}</Project>
+      <Name>RubiksCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

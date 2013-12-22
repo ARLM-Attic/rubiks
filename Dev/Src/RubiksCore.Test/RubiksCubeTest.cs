@@ -7,37 +7,37 @@ namespace RubiksCore.Test
     public class RubiksCubeTest
     {
         [TestMethod]
-        public void TurnFront_WhenTurningDirectionIs90Degrees_ThenAllCubesOnThatFaceShouldMove()
+        public void TurnFront_WhenTurningDirectionIsThreeoClock_ThenAllCubesOnThatFaceShouldMove()
         {
             Assert.Inconclusive();
         }
 
         [TestMethod]
-        public void TurnRight_WhenTurningDirectionIs90Degrees_ThenAllCubesOnThatFaceShouldMove()
+        public void TurnRight_WhenTurningDirectionIsThreeoClock_ThenAllCubesOnThatFaceShouldMove()
         {
             Assert.Inconclusive();
         }
 
         [TestMethod]
-        public void TurnTop_WhenTurningDirectionIs90Degrees_ThenAllCubesOnThatFaceShouldMove()
+        public void TurnTop_WhenTurningDirectionIsThreeoClock_ThenAllCubesOnThatFaceShouldMove()
         {
             Assert.Inconclusive();
         }
 
         [TestMethod]
-        public void TurnFront_WhenTurningDirectionIsNegative90Degrees_ThenAllCubesOnThatFaceShouldMove()
+        public void TurnFront_WhenTurningDirectionIsNineoClock_ThenAllCubesOnThatFaceShouldMove()
         {
             Assert.Inconclusive();
         }
 
         [TestMethod]
-        public void TurnRight_WhenTurningDirectionIsNegative90Degrees_ThenAllCubesOnThatFaceShouldMove()
+        public void TurnRight_WhenTurningDirectionIsNineoClock_ThenAllCubesOnThatFaceShouldMove()
         {
             Assert.Inconclusive();
         }
 
         [TestMethod]
-        public void TurnTop_WhenTurningDirectionIsNegative90Degrees_ThenAllCubesOnThatFaceShouldMove()
+        public void TurnTop_WhenTurningDirectionIsNineoClock_ThenAllCubesOnThatFaceShouldMove()
         {
             Assert.Inconclusive();
         }
