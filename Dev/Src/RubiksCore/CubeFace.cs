@@ -46,6 +46,20 @@ namespace RubiksCore
 
         #endregion
 
+        #region Methods
+
+        /// <summary>
+        /// Gets CubiePositions for this face in addition to any number of layers deep.
+        /// </summary>
+        /// <param name="numberOfLayersDeep">The number of layers beneath the face to get positions for.</param>
+        /// <returns>The cumulative positions for this face and the layers beneath it.</returns>
+        public IEnumerable<Position> GetPositionsOfLayersBeneathFace(int numberOfLayersDeep)
+        {
+            return CubiePositions.ToList();
+        }
+
+        #endregion
+
         #region Methods\\Helpers
 
         private void InitializeStartingPoints(int cubeSize)

@@ -388,5 +388,179 @@ namespace RubiksCore.Test
             //verification
             Assert.IsTrue(expectedPositions.SetEquals(face.CubiePositions));
         }
+
+        [TestMethod]
+        public void GetPositionsOfLayersBeneathFace_WhenNumberOfLayersDeepIsZero_ThenCubiePositionsAreEqualToPositionsOfFace()
+        {
+            //setup
+            CubeFace face = new CubeFace(RubiksDirection.Front);
+
+            //exercise
+            IEnumerable<Position> positions = face.GetPositionsOfLayersBeneathFace(0);
+
+            //verification
+            Assert.IsTrue(new HashSet<Position>(face.CubiePositions).SetEquals(positions));
+        }
+
+        [TestMethod]
+        public void GetPositionsOfLayersBeneathFace_WhenNumberOfLayersDeepIsOne_ThenCubiePositionsIncludePositionsOfFacePlusOneLayerBeneathIt()
+        {
+            //setup
+            CubeFace face = new CubeFace(RubiksDirection.Back);
+
+            //setup
+            HashSet<Position> expectedPositions = new HashSet<Position>();
+
+            //layer one
+            Position position000 = new Position()
+            {
+                X = 0,
+                Y = 0,
+                Z = 0
+            };
+            expectedPositions.Add(position000);
+
+            Position position100 = new Position()
+            {
+                X = 1,
+                Y = 0,
+                Z = 0
+            };
+            expectedPositions.Add(position100);
+
+            Position position200 = new Position()
+            {
+                X = 2,
+                Y = 0,
+                Z = 0
+            };
+            expectedPositions.Add(position200);
+
+            Position position001 = new Position()
+            {
+                X = 0,
+                Y = 0,
+                Z = 1
+            };
+            expectedPositions.Add(position001);
+
+            Position position101 = new Position()
+            {
+                X = 1,
+                Y = 0,
+                Z = 1
+            };
+            expectedPositions.Add(position101);
+
+            Position position201 = new Position()
+            {
+                X = 2,
+                Y = 0,
+                Z = 1
+            };
+            expectedPositions.Add(position201);
+
+            Position position002 = new Position()
+            {
+                X = 0,
+                Y = 0,
+                Z = 2
+            };
+            expectedPositions.Add(position002);
+
+            Position position102 = new Position()
+            {
+                X = 1,
+                Y = 0,
+                Z = 2
+            };
+            expectedPositions.Add(position102);
+
+            Position position202 = new Position()
+            {
+                X = 2,
+                Y = 0,
+                Z = 2
+            };
+            expectedPositions.Add(position202);
+
+            //layer two
+            Position position010 = new Position()
+            {
+                X = 0,
+                Y = 1,
+                Z = 0
+            };
+            expectedPositions.Add(position010);
+
+            Position position110 = new Position()
+            {
+                X = 1,
+                Y = 1,
+                Z = 0
+            };
+            expectedPositions.Add(position110);
+
+            Position position210 = new Position()
+            {
+                X = 2,
+                Y = 1,
+                Z = 0
+            };
+            expectedPositions.Add(position210);
+
+            Position position011 = new Position()
+            {
+                X = 0,
+                Y = 1,
+                Z = 1
+            };
+            expectedPositions.Add(position011);
+
+            Position position111 = new Position()
+            {
+                X = 1,
+                Y = 1,
+                Z = 1
+            };
+            expectedPositions.Add(position111);
+
+            Position position211 = new Position()
+            {
+                X = 2,
+                Y = 1,
+                Z = 1
+            };
+            expectedPositions.Add(position211);
+
+            Position position012 = new Position()
+            {
+                X = 0,
+                Y = 1,
+                Z = 2
+            };
+            expectedPositions.Add(position012);
+
+            Position position112 = new Position()
+            {
+                X = 1,
+                Y = 1,
+                Z = 2
+            };
+            expectedPositions.Add(position112);
+
+            Position position212 = new Position()
+            {
+                X = 2,
+                Y = 1,
+                Z = 2
+            };
+            expectedPositions.Add(position212);
+            //exercise
+            IEnumerable<Position> positions = face.GetPositionsOfLayersBeneathFace(1);
+
+            Assert.AreEqual<int>(18, positions.Count());
+            Assert.IsTrue(expectedPositions.SetEquals(positions));
+        }
     }
 }
