@@ -298,7 +298,7 @@ namespace RubiksCore.Test
             expectedPositions.Add(position222);
 
             //exercise
-            CubeFace face = new CubeFace(RubiksDirection.Back, 3);
+            CubeFace face = new CubeFace(RubiksDirection.Right, 3);
 
             //verification
             Assert.IsTrue(expectedPositions.SetEquals(face.CubiePositions));
