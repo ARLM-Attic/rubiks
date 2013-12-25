@@ -12,7 +12,7 @@ namespace RubiksCore.Test
         public void InitializeCubeFace_WhenCubeSizeIsTwoAndDirectionIsBack_ThenCubiePositionsAreAccurate()
         {
             //setup
-            List<Position> expectedPositions = new List<Position>();
+            HashSet<Position> expectedPositions = new HashSet<Position>();
 
             Position position000 = new Position()
             {
@@ -47,14 +47,14 @@ namespace RubiksCore.Test
             CubeFace face = new CubeFace(RubiksDirection.Back, 2);
 
             //verification
-            Assert.IsTrue(expectedPositions.Equals(face.CubiePositions));
+            Assert.IsTrue(expectedPositions.SetEquals(face.CubiePositions));
         }
 
         [TestMethod]
         public void InitializeCubeFace_WhenCubeSizeIsTwoAndDirectionIsRight_ThenCubiePositionsAreAccurate()
         {
             //setup
-            List<Position> expectedPositions = new List<Position>();
+            HashSet<Position> expectedPositions = new HashSet<Position>();
 
             Position position100 = new Position()
             {
@@ -89,14 +89,14 @@ namespace RubiksCore.Test
             CubeFace face = new CubeFace(RubiksDirection.Right, 2);
 
             //verification
-            Assert.IsTrue(expectedPositions.Equals(face.CubiePositions));
+            Assert.IsTrue(expectedPositions.SetEquals(face.CubiePositions));
         }
 
         [TestMethod]
         public void InitializeCubeFace_WhenCubeSizeIsTwoAndDirectionIsUp_ThenCubiePositionsAreAccurate()
         {
             //setup
-            List<Position> expectedPositions = new List<Position>();
+            HashSet<Position> expectedPositions = new HashSet<Position>();
 
             Position position001 = new Position()
             {
@@ -131,14 +131,14 @@ namespace RubiksCore.Test
             CubeFace face = new CubeFace(RubiksDirection.Up, 2);
 
             //verification
-            Assert.IsTrue(expectedPositions.Equals(face.CubiePositions));
+            Assert.IsTrue(expectedPositions.SetEquals(face.CubiePositions));
         }
 
         [TestMethod]
         public void InitializeCubeFace_WhenCubeSizeIsThreeAndDirectionIsBack_ThenCubiePositionsAreAccurate()
         {
             //setup
-            List<Position> expectedPositions = new List<Position>();
+            HashSet<Position> expectedPositions = new HashSet<Position>();
 
             Position position000 = new Position()
             {
@@ -216,14 +216,14 @@ namespace RubiksCore.Test
             CubeFace face = new CubeFace(RubiksDirection.Back, 3);
 
             //verification
-            Assert.IsTrue(face.CubiePositions.SequenceEqual(expectedPositions));
+            Assert.IsTrue(expectedPositions.SetEquals(face.CubiePositions));
         }
 
         [TestMethod]
         public void InitializeCubeFace_WhenCubeSizeIsThreeAndDirectionIsRight_ThenCubiePositionsAreAccurate()
         {
             //setup
-            List<Position> expectedPositions = new List<Position>();
+            HashSet<Position> expectedPositions = new HashSet<Position>();
 
             Position position200 = new Position()
             {
@@ -301,14 +301,14 @@ namespace RubiksCore.Test
             CubeFace face = new CubeFace(RubiksDirection.Back, 3);
 
             //verification
-            Assert.IsTrue(face.CubiePositions.SequenceEqual(expectedPositions));
+            Assert.IsTrue(expectedPositions.SetEquals(face.CubiePositions));
         }
 
         [TestMethod]
         public void InitializeCubeFace_WhenCubeSizeIsThreeAndDirectionIsUp_ThenCubiePositionsAreAccurate()
         {
             //setup
-            List<Position> expectedPositions = new List<Position>();
+            HashSet<Position> expectedPositions = new HashSet<Position>();
 
             Position position002 = new Position()
             {
@@ -386,7 +386,7 @@ namespace RubiksCore.Test
             CubeFace face = new CubeFace(RubiksDirection.Up, 3);
 
             //verification
-            Assert.IsTrue(face.CubiePositions.SequenceEqual(expectedPositions));
+            Assert.IsTrue(expectedPositions.SetEquals(face.CubiePositions));
         }
     }
 }
