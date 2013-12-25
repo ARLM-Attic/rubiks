@@ -48,40 +48,6 @@
 
         #endregion
 
-        #region Methods \\ Moves moving two layers
-
-        public void TurnFrontTwo(TurningDirection direction = TurningDirection.ThreeoClock)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void TurnBackTwo(TurningDirection direction = TurningDirection.ThreeoClock)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void TurnRightTwo(TurningDirection direction = TurningDirection.ThreeoClock)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void TurnLeftTwo(TurningDirection direction = TurningDirection.ThreeoClock)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void TurnUpTwo(TurningDirection direction = TurningDirection.ThreeoClock)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void TurnDownTwo(TurningDirection direction = TurningDirection.ThreeoClock)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        #endregion
-
         #region Methods \\ Turning the entire cube
 
         public void TurnCubeOnX(TurningDirection direction = TurningDirection.ThreeoClock)
@@ -108,7 +74,7 @@
             throw new System.NotImplementedException();
         }
 
-        public virtual void Turn(RubiksDirection side, TurningDirection direction = TurningDirection.ThreeoClock)
+        public void Turn(RubiksDirection side, TurningDirection direction = TurningDirection.ThreeoClock, int numberOfLayersDeep = 0)
         {
             throw new System.NotImplementedException();
         }
