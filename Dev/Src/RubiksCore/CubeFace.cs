@@ -188,16 +188,5 @@ namespace RubiksCore
         } 
 
         #endregion
-
-        #region Enums
-
-        enum Axes
-        {
-            X,
-            Y,
-            Z
-        } 
-
-        #endregion
     }
 }

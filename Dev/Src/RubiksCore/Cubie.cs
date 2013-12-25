@@ -50,7 +50,7 @@
 
         #region Methods
 
-        public void Move(Position newPosition)
+        public void Move(Position newPosition, Axes axisOfRotation, TurningDirection direction)
         {
             Position = newPosition;
         }

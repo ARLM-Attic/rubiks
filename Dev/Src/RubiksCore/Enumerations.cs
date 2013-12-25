@@ -26,4 +26,11 @@
         Left,
         Right,
     }
+
+    public enum Axes
+    {
+        X,
+        Y,
+        Z
+    }
 }
