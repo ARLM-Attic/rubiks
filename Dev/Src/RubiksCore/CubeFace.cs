@@ -55,7 +55,48 @@ namespace RubiksCore
         /// <returns>The cumulative positions for this face and the layers beneath it.</returns>
         public IEnumerable<Position> GetPositionsOfLayersBeneathFace(int numberOfLayersDeep)
         {
-            return CubiePositions.ToList();
+            List<Position> aggregateList = new List<Position>();
+            aggregateList.AddRange(CubiePositions);
+
+            for(int layerNumber = 1; layerNumber <= numberOfLayersDeep; layerNumber++)
+            {
+                foreach(Position pos in CubiePositions)
+                {
+                    //Come back and see why I can't just use = sign to pass by value into new variable
+                    Position transformedPosition = pos;
+                    int transformation = layerNumber;
+                    switch (FaceDirection)
+                    {
+                        case RubiksDirection.Front:
+                            transformation *= -1;
+                            transformedPosition.Y += transformation;
+                            break;
+                        case RubiksDirection.Back:
+                            transformedPosition.Y += transformation;
+                            break;
+                        case RubiksDirection.Up:
+                            transformation *= -1;
+                            transformedPosition.Z += transformation;
+                            break;
+                        case RubiksDirection.Down:
+                            transformedPosition.Z += transformation;
+                            break;
+                        case RubiksDirection.Left:
+                            transformedPosition.X += transformation;
+                            break;
+                        case RubiksDirection.Right:
+                            transformation *= -1;
+                            transformedPosition.X += transformation;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    aggregateList.Add(transformedPosition);
+                }
+            }
+
+            return aggregateList;
         }
 
         #endregion
