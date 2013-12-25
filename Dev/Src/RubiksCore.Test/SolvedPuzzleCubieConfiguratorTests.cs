@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace RubiksCore.Test
 {
     [TestClass]
-    public class SolvedPuzzleCubieConfiguratorTest
+    public class SolvedPuzzleCubieConfiguratorTests
     {
         [TestMethod]
         public void CreateCubies_WhenTheNumberOfSidesIsThree_ThenItReturnsCubiesInASolvedState()

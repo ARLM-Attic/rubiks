@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace RubiksCore.Test
 {
     [TestClass]
-    public class CubeFaceTest
+    public class CubeFaceTests
     {
         [TestMethod]
         public void InitializeCubeFace_WhenCubeSizeIsTwoAndDirectionIsBack_ThenCubiePositionsAreAccurate()

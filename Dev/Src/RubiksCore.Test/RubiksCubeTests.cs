@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace RubiksCore.Test
 {
     [TestClass]
-    public class RubiksCubeTest
+    public class RubiksCubeTests
     {
         [TestMethod]
         public void TurnFront_WhenTurningDirectionIsThreeoClock_ThenAllCubesOnThatFaceShouldMove()
