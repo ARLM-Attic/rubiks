@@ -62,7 +62,6 @@ namespace RubiksCore
             {
                 foreach(Position pos in CubiePositions)
                 {
-                    //Come back and see why I can't just use = sign to pass by value into new variable
                     Position transformedPosition = pos;
                     int transformation = layerNumber;
                     switch (FaceDirection)
