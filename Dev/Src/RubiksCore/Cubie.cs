@@ -50,9 +50,9 @@
 
         #region Methods
 
-        public void Move(Position beginPosition, Position endPosition)
+        public void Move(Position newPosition)
         {
-            throw new System.NotImplementedException();
+            Position = newPosition;
         }
 
         #endregion
@@ -90,6 +90,13 @@
 
         public Cubie(RubiksColor? frontSide, RubiksColor? backSide, RubiksColor? rightSide, RubiksColor? leftSide, RubiksColor? upSide, RubiksColor? downSide, Position postion)
         {
+            FrontSide = frontSide;
+            BackSide = backSide;
+            RightSide = rightSide;
+            LeftSide = leftSide;
+            UpSide = upSide;
+            DownSide = downSide;
+            Position = postion;
         }
 
         #endregion
