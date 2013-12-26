@@ -261,19 +261,127 @@ namespace RubiksCore.Test
         [TestMethod]
         public void Move_WhenAxisOfRotationIsZAndDirectionIs3oClock_ThenTheAppropriateFaceAreShifted()
         {
-            Assert.Inconclusive();
+            Cubie cubie = new Cubie
+                       (
+                           frontSide: RubiksColor.White,
+                           backSide: null,
+                           rightSide: RubiksColor.Red,
+                           leftSide: null,
+                           upSide: RubiksColor.Blue,
+                           downSide: null,
+                           postion:
+                               new Position()
+                               {
+                                   X = 3,
+                                   Y = 3,
+                                   Z = 3
+                               }
+                       );
+
+            cubie.Move(new Position() { X = 0, Y = 3, Z = 3 }, Axes.Z, TurningDirection.ThreeoClock);
+
+            Cubie expectedCubie = new Cubie
+                    (
+                        frontSide: RubiksColor.Red,
+                        backSide: null,
+                        rightSide: null,
+                        leftSide: RubiksColor.White,
+                        upSide: RubiksColor.Blue,
+                        downSide: null,
+                        postion:
+                            new Position()
+                            {
+                                X = 0,
+                                Y = 3,
+                                Z = 3
+                            }
+                    );
+
+            Assert.AreEqual<Cubie>(expectedCubie, cubie);
         }
 
         [TestMethod]
         public void Move_WhenAxisOfRotationIsZAndDirectionIs6oClock_ThenTheAppropriateFaceAreShifted()
         {
-            Assert.Inconclusive();
+            Cubie cubie = new Cubie
+                       (
+                           frontSide: RubiksColor.White,
+                           backSide: null,
+                           rightSide: RubiksColor.Red,
+                           leftSide: null,
+                           upSide: RubiksColor.Blue,
+                           downSide: null,
+                           postion:
+                               new Position()
+                               {
+                                   X = 3,
+                                   Y = 3,
+                                   Z = 3
+                               }
+                       );
+
+            cubie.Move(new Position() { X = 0, Y = 0, Z = 3 }, Axes.Z, TurningDirection.SixoClock);
+
+            Cubie expectedCubie = new Cubie
+                    (
+                        frontSide: null,
+                        backSide: RubiksColor.White,
+                        rightSide: null,
+                        leftSide: RubiksColor.Red,
+                        upSide: RubiksColor.Blue,
+                        downSide: null,
+                        postion:
+                            new Position()
+                            {
+                                X = 0,
+                                Y = 0,
+                                Z = 3
+                            }
+                    );
+
+            Assert.AreEqual<Cubie>(expectedCubie, cubie);
         }
 
         [TestMethod]
         public void Move_WhenAxisOfRotationIsZAndDirectionIs9oClock_ThenTheAppropriateFaceAreShifted()
         {
-            Assert.Inconclusive();
+            Cubie cubie = new Cubie
+                       (
+                           frontSide: RubiksColor.White,
+                           backSide: null,
+                           rightSide: RubiksColor.Red,
+                           leftSide: null,
+                           upSide: RubiksColor.Blue,
+                           downSide: null,
+                           postion:
+                               new Position()
+                               {
+                                   X = 3,
+                                   Y = 3,
+                                   Z = 3
+                               }
+                       );
+
+            cubie.Move(new Position() { X = 3, Y = 0, Z = 3 }, Axes.Z, TurningDirection.NineoClock);
+
+            Cubie expectedCubie = new Cubie
+                    (
+                        frontSide: null,
+                        backSide: RubiksColor.Red,
+                        rightSide: RubiksColor.White,
+                        leftSide: null,
+                        upSide: RubiksColor.Blue,
+                        downSide: null,
+                        postion:
+                            new Position()
+                            {
+                                X = 3,
+                                Y = 0,
+                                Z = 3
+                            }
+                    );
+
+            Assert.AreEqual<Cubie>(expectedCubie, cubie);
         }
     }
 }
