@@ -98,6 +98,11 @@ namespace RubiksCore
             return aggregateList;
         }
 
+        public IDictionary<Position, Position> Move(TurningDirection direction, int numberOfLayersDeep = 0)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Methods\\Helpers
