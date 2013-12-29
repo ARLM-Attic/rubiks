@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 namespace RubiksCore
@@ -19,7 +20,18 @@ namespace RubiksCore
         {
             get
             {
-                throw new System.NotImplementedException();
+                Position requestedPosition = new Position() { X = x, Y = y, Z = z };
+
+                Cubie cubie = _cubies.FirstOrDefault(cub => cub.Position.Equals(requestedPosition));
+
+                if(cubie == null)
+                {
+                    throw new InvalidOperationException(string.Format("Could not find requested cube at {0}", requestedPosition));
+                }
+                else
+                {
+                    return cubie;
+                }
             }
         }
 
@@ -121,6 +133,12 @@ namespace RubiksCore
         #region Constructors
 
         public RubiksCube(INotationParser parser, int cubeSize = 3)
+            : this(parser, new SolvedPuzzleCubieConfigurator(), cubeSize)
+        {
+            
+        }
+
+        internal RubiksCube(INotationParser parser, ICubieConfigurator configurator, int cubeSize)
         {
             _faces = new Dictionary<RubiksDirection, CubeFace>();
             _faces.Add(RubiksDirection.Front, new CubeFace(RubiksDirection.Front, cubeSize));
