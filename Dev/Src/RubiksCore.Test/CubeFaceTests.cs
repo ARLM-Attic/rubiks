@@ -563,6 +563,8 @@ namespace RubiksCore.Test
             Assert.IsTrue(expectedPositions.SetEquals(positions));
         }
 
+        #region Move Face (Single Layer)
+
         [TestMethod]
         public void Move_WhenFaceIsFrontAndLayersDeepIsZero_ThenFrontFacePositionsMoved()
         {
@@ -570,7 +572,7 @@ namespace RubiksCore.Test
 
             IDictionary<Position, Position> positions = frontFace.Move(TurningDirection.ThreeoClock);
 
-            Dictionary<Position, Position> expectedPositions = new Dictionary<Position,Position>();
+            Dictionary<Position, Position> expectedPositions = new Dictionary<Position, Position>();
             expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 0 }, new Position() { X = 0, Y = 2, Z = 2 });
             expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 1 }, new Position() { X = 1, Y = 2, Z = 2 });
             expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 2 }, new Position() { X = 2, Y = 2, Z = 2 });
@@ -687,6 +689,58 @@ namespace RubiksCore.Test
             HashSet<KeyValuePair<Position, Position>> expectedPositionsHashSet = new HashSet<KeyValuePair<Position, Position>>(expectedPositions.ToList());
 
             Assert.IsTrue(expectedPositionsHashSet.SetEquals(positions));
+        } 
+
+        #endregion
+
+        #region Move Face (Rotate 6 oClock)
+
+        [TestMethod]
+        public void Move_WhenRotationIs6oClock_ThenFrontFacePositionsMoved()
+        {
+            CubeFace frontFace = new CubeFace(RubiksDirection.Front);
+
+            IDictionary<Position, Position> positions = frontFace.Move(TurningDirection.SixoClock);
+
+            Dictionary<Position, Position> expectedPositions = new Dictionary<Position, Position>();
+            expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 0 }, new Position() { X = 2, Y = 2, Z = 2 });
+            expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 1 }, new Position() { X = 2, Y = 2, Z = 1 });
+            expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 2 }, new Position() { X = 2, Y = 2, Z = 0 });
+            expectedPositions.Add(new Position() { X = 1, Y = 2, Z = 0 }, new Position() { X = 1, Y = 2, Z = 2 });
+            expectedPositions.Add(new Position() { X = 1, Y = 2, Z = 2 }, new Position() { X = 1, Y = 2, Z = 0 });
+            expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 0 }, new Position() { X = 0, Y = 2, Z = 2 });
+            expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 1 }, new Position() { X = 0, Y = 2, Z = 1 });
+            expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 2 }, new Position() { X = 0, Y = 2, Z = 0 });
+            HashSet<KeyValuePair<Position, Position>> expectedPositionsHashSet = new HashSet<KeyValuePair<Position, Position>>(expectedPositions.ToList());
+
+            Assert.IsTrue(expectedPositionsHashSet.SetEquals(positions));
         }
+
+        #endregion
+
+        #region Move Face (Rotate 9 oClock)
+
+        [TestMethod]
+        public void Move_WhenRotationIs9oClock_ThenFrontFacePositionsMoved()
+        {
+            CubeFace frontFace = new CubeFace(RubiksDirection.Front);
+
+            IDictionary<Position, Position> positions = frontFace.Move(TurningDirection.NineoClock);
+
+            Dictionary<Position, Position> expectedPositions = new Dictionary<Position, Position>();
+            expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 0 }, new Position() { X = 2, Y = 2, Z = 0 });
+            expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 1 }, new Position() { X = 1, Y = 2, Z = 0 });
+            expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 2 }, new Position() { X = 0, Y = 2, Z = 0 });
+            expectedPositions.Add(new Position() { X = 1, Y = 2, Z = 0 }, new Position() { X = 2, Y = 2, Z = 1 });
+            expectedPositions.Add(new Position() { X = 1, Y = 2, Z = 2 }, new Position() { X = 0, Y = 2, Z = 1 });
+            expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 0 }, new Position() { X = 2, Y = 2, Z = 2 });
+            expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 1 }, new Position() { X = 1, Y = 2, Z = 2 });
+            expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 2 }, new Position() { X = 0, Y = 2, Z = 2 });
+            HashSet<KeyValuePair<Position, Position>> expectedPositionsHashSet = new HashSet<KeyValuePair<Position, Position>>(expectedPositions.ToList());
+
+            Assert.IsTrue(expectedPositionsHashSet.SetEquals(positions));
+        }
+
+        #endregion
     }
 }
