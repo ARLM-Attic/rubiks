@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 namespace RubiksCore
 {
     public class RubiksCube
@@ -11,6 +12,7 @@ namespace RubiksCore
         private IDictionary<RubiksDirection, CubeFace> _faces;
         private INotationParser _parser = null;
         private IEnumerable<Cubie> _cubies;
+        private int _cubeSize;
 
         #endregion
 
@@ -107,7 +109,13 @@ namespace RubiksCore
 
         public void Turn(RubiksDirection side, TurningDirection direction = TurningDirection.ThreeoClock, int numberOfLayersDeep = 0)
         {
-            IDictionary<Position, Position> oldNewPositions = _faces[side].Move(direction, numberOfLayersDeep);
+            TurningDirection modifiedDirection = direction;
+            if(side == RubiksDirection.Back || side == RubiksDirection.Left || side == RubiksDirection.Down)
+            {
+                modifiedDirection = direction.InvertTurningDirection();
+            }
+
+            IDictionary<Position, Position> oldNewPositions = _faces[side].Move(modifiedDirection, numberOfLayersDeep);
             IEnumerable<KeyValuePair<Cubie, Position>> cubieToNewPositionPairs = oldNewPositions.Select
                 (pair => new KeyValuePair<Cubie, Position>(this[pair.Key], pair.Value)).ToList();
 
@@ -117,22 +125,22 @@ namespace RubiksCore
                 switch (side)
                 {
                     case RubiksDirection.Front:
-                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Y, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Y, modifiedDirection);
                         break;
                     case RubiksDirection.Back:
-                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Y, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Y, modifiedDirection);
                         break;
                     case RubiksDirection.Up:
-                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Z, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Z, modifiedDirection);
                         break;
                     case RubiksDirection.Down:
-                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Z, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Z, modifiedDirection);
                         break;
                     case RubiksDirection.Left:
-                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.X, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.X, modifiedDirection);
                         break;
                     case RubiksDirection.Right:
-                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.X, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.X, modifiedDirection);
                         break;
                     default:
                         break;
@@ -159,10 +167,31 @@ namespace RubiksCore
             _faces.Add(RubiksDirection.Down, new CubeFace(RubiksDirection.Down, cubeSize));
             _faces.Add(RubiksDirection.Left, new CubeFace(RubiksDirection.Left, cubeSize));
             _faces.Add(RubiksDirection.Right, new CubeFace(RubiksDirection.Right, cubeSize));
+            _cubeSize = cubeSize;
 
             _parser = parser;
 
             _cubies = new SolvedPuzzleCubieConfigurator().CreateCubies(cubeSize);
+        }
+
+        #endregion
+
+        #region Methods \\ Overrides
+
+        public override string ToString()
+        {
+            StringBuilder cubeString = new StringBuilder();
+            for(int z = 0; z < _cubeSize; z++)
+            {
+                for(int y = 0; y < _cubeSize; y++)
+                {
+                    for(int x = 0; x < _cubeSize; x++)
+                    {
+                        cubeString.AppendLine(this[x, y, z].ToString());
+                    }
+                }
+            }
+            return cubeString.ToString();
         }
 
         #endregion

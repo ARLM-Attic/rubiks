@@ -46,6 +46,7 @@
     <Compile Include="CubeFace.cs" />
     <Compile Include="Cubie.cs" />
     <Compile Include="Enumerations.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="ICubieConfigurator.cs" />
     <Compile Include="INotationParser.cs" />
     <Compile Include="Position.cs" />
