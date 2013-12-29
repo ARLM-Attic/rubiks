@@ -107,28 +107,32 @@ namespace RubiksCore
 
         public void Turn(RubiksDirection side, TurningDirection direction = TurningDirection.ThreeoClock, int numberOfLayersDeep = 0)
         {
-            foreach(KeyValuePair<Position, Position> oldNewPositions in _faces[side].Move(direction, numberOfLayersDeep))
+            IDictionary<Position, Position> oldNewPositions = _faces[side].Move(direction, numberOfLayersDeep);
+            IEnumerable<KeyValuePair<Cubie, Position>> cubieToNewPositionPairs = oldNewPositions.Select
+                (pair => new KeyValuePair<Cubie, Position>(this[pair.Key], pair.Value)).ToList();
+
+            foreach (KeyValuePair<Cubie, Position> cubieToNewPositionPair in cubieToNewPositionPairs)
             {
-                Cubie cubieToMove = this[oldNewPositions.Key];
+                Cubie cubieToMove = cubieToNewPositionPair.Key;
                 switch (side)
                 {
                     case RubiksDirection.Front:
-                        cubieToMove.Move(oldNewPositions.Value, Axes.Y, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Y, direction);
                         break;
                     case RubiksDirection.Back:
-                        cubieToMove.Move(oldNewPositions.Value, Axes.Y, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Y, direction);
                         break;
                     case RubiksDirection.Up:
-                        cubieToMove.Move(oldNewPositions.Value, Axes.Z, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Z, direction);
                         break;
                     case RubiksDirection.Down:
-                        cubieToMove.Move(oldNewPositions.Value, Axes.Z, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.Z, direction);
                         break;
                     case RubiksDirection.Left:
-                        cubieToMove.Move(oldNewPositions.Value, Axes.X, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.X, direction);
                         break;
                     case RubiksDirection.Right:
-                        cubieToMove.Move(oldNewPositions.Value, Axes.X, direction);
+                        cubieToMove.Move(cubieToNewPositionPair.Value, Axes.X, direction);
                         break;
                     default:
                         break;
