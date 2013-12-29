@@ -13,7 +13,8 @@ namespace RubiksCore
 
         private Dictionary<RubiksDirection, Position> _startingPointsForVariousFaces =
             new Dictionary<RubiksDirection, Position>();
-        private List<Position> _positions = new List<Position>(); 
+        private List<Position> _positions = new List<Position>();
+        private int _parentCubeSize; 
 
         #endregion
 
@@ -39,6 +40,7 @@ namespace RubiksCore
 
         internal CubeFace(RubiksDirection direction, int parentCubeSize = 3)
         {
+            _parentCubeSize = parentCubeSize;
             FaceDirection = direction;
             InitializeStartingPoints(parentCubeSize);
             InitializeCubiePositions(parentCubeSize);
@@ -100,7 +102,82 @@ namespace RubiksCore
 
         public IDictionary<Position, Position> Move(TurningDirection direction, int numberOfLayersDeep = 0)
         {
+            Dictionary<Position, Position> _positions = new Dictionary<Position,Position>();
+
+            foreach(Square square in GetSquares(numberOfLayersDeep))
+            {
+                foreach(Position pos in square.PositionsInSquare)
+                {
+                    PositionMover mover = new PositionMover(pos, square.PositionOne, square.PositionTwo, square.PositionThree, square.PositionFour);
+                    int numberOfPositionsToMoveForThreeOClock = _parentCubeSize - 1;
+                    int numberOfPositionToMove = numberOfPositionsToMoveForThreeOClock;
+                    switch (direction)
+                    {
+                        case TurningDirection.ThreeoClock:
+                            numberOfPositionToMove *= 1;
+                            break;
+                        case TurningDirection.SixoClock:
+                            numberOfPositionToMove *= 2;
+                            break;
+                        case TurningDirection.NineoClock:
+                            numberOfPositionToMove *= 3;
+                            break;
+                        default:
+                            break;
+                    }
+                    _positions.Add(pos, mover.Move(numberOfPositionToMove));
+                }
+            }
+
+            return _positions;
+        }
+
+        //TODO: Make this for other cubes that are not 3x3x3
+        private IEnumerable<Square> GetSquares(int numberOfLayersDeep)
+        {
             throw new NotImplementedException();
+            int max = _parentCubeSize - 1;
+            for (int layer = 0; layer <= numberOfLayersDeep; layer++)
+            {
+                int fixedValue = 0;
+                switch (FaceDirection)
+                {
+                    case RubiksDirection.Front:
+                        fixedValue = _parentCubeSize - 1 - layer;
+                        Position positionOne = new Position() { X = 0, Y = fixedValue, Z = 0 };
+                        Position positionTwo = new Position() { X = 0, Y = fixedValue, Z = max };
+                        Position positionThree = new Position() { X = max, Y = fixedValue, Z = max };
+                        Position positionFour = new Position() { X = max, Y = fixedValue, Z = 0 };
+                        HashSet<Position> squarePoints = new HashSet<Position>();
+                        PositionMover mover = new PositionMover(positionOne, positionOne, positionTwo, positionThree, positionFour);
+                        squarePoints.Add(positionOne);
+                        Position next = default(Position);
+                        while (!next.Equals(positionOne))
+                        {
+                            next = mover.Move(1);
+                            if(!next.Equals(positionOne))
+                                squarePoints.Add(next);
+                        }
+                        break;
+                    case RubiksDirection.Back:
+                        fixedValue = layer;
+                        break;
+                    case RubiksDirection.Up:
+                        fixedValue = _parentCubeSize - 1 - layer;
+                        break;
+                    case RubiksDirection.Down:
+                        fixedValue = layer;
+                        break;
+                    case RubiksDirection.Left:
+                        fixedValue = layer;
+                        break;
+                    case RubiksDirection.Right:
+                        fixedValue = _parentCubeSize - 1 - layer;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         #endregion
@@ -189,6 +266,243 @@ namespace RubiksCore
                     }
                     _positions.Add(position);
                 }
+            }
+        } 
+
+        #endregion
+
+
+        #region Helper Classes
+        class PositionMover
+        {
+            private Position _pointToMove;
+            private Position _squarePointOne;
+            private Position _squarePointTwo;
+            private Position _squarePointThree;
+            private Position _squarePointFour;
+            private Axes _axisOfRotation;
+
+            public PositionMover(Position pointToMove, Position squarePointOne, Position squarePointTwo, Position squarePointThree, Position squarePointFour)
+            {
+                _pointToMove = pointToMove;
+                _squarePointOne = squarePointOne;
+                _squarePointTwo = squarePointTwo;
+                _squarePointThree = squarePointThree;
+                _squarePointFour = squarePointFour;
+
+                if (squarePointOne.X == _squarePointTwo.X && squarePointTwo.X == squarePointThree.X && squarePointThree.X == squarePointFour.X)
+                {
+                    _axisOfRotation = Axes.X;
+                }
+
+                if (squarePointOne.Y == _squarePointTwo.Y && squarePointTwo.Y == squarePointThree.Y && squarePointThree.Y == squarePointFour.Y)
+                {
+                    _axisOfRotation = Axes.Y;
+                }
+
+                if (squarePointOne.Z == _squarePointTwo.Z && squarePointTwo.Z == squarePointThree.Z && squarePointThree.Z == squarePointFour.Z)
+                {
+                    _axisOfRotation = Axes.Z;
+                }
+
+
+            }
+
+            public Position Move(int positionsToMove)
+            {
+                for (int i = 0; i < positionsToMove; i++)
+                {
+                    Move();
+                }
+
+                return _pointToMove;
+            }
+
+            private void Move()
+            {
+                if (_pointToMove.Equals(_squarePointOne))
+                {
+                    MoveUp();
+                }
+
+                if (_pointToMove.Equals(_squarePointTwo))
+                {
+                    MoveRight();
+                }
+
+                if (_pointToMove.Equals(_squarePointThree))
+                {
+                    MoveDown();
+                }
+
+                if (_pointToMove.Equals(_squarePointFour))
+                {
+                    MoveLeft();
+                }
+
+                switch (DetermineRange(_pointToMove))
+                {
+                    case Range.Between1and2:
+                        MoveUp();
+                        break;
+                    case Range.Between2and3:
+                        MoveRight();
+                        break;
+                    case Range.Between3and4:
+                        MoveDown();
+                        break;
+                    case Range.Between4and1:
+                        MoveLeft();
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+
+            private void MoveUp()
+            {
+                switch (_axisOfRotation)
+                {
+                    case Axes.X:
+                        _pointToMove.Z++;
+                        break;
+                    case Axes.Y:
+                        _pointToMove.Z++;
+                        break;
+                    case Axes.Z:
+                        _pointToMove.Y--;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            private void MoveRight()
+            {
+                switch (_axisOfRotation)
+                {
+                    case Axes.X:
+                        _pointToMove.Y--;
+                        break;
+                    case Axes.Y:
+                        _pointToMove.X++;
+                        break;
+                    case Axes.Z:
+                        _pointToMove.X++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            private void MoveDown()
+            {
+                switch (_axisOfRotation)
+                {
+                    case Axes.X:
+                        _pointToMove.Z--;
+                        break;
+                    case Axes.Y:
+                        _pointToMove.Z--;
+                        break;
+                    case Axes.Z:
+                        _pointToMove.Y++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            private void MoveLeft()
+            {
+                switch (_axisOfRotation)
+                {
+                    case Axes.X:
+                        _pointToMove.X++;
+                        break;
+                    case Axes.Y:
+                        _pointToMove.X--;
+                        break;
+                    case Axes.Z:
+                        _pointToMove.X--;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            private Range DetermineRange(Position position)
+            {
+                throw new NotImplementedException();
+                switch (_axisOfRotation)
+                {
+                    case Axes.X:
+                        if(position.Z > _squarePointOne.Z && position.Z < _squarePointTwo.Z && position.Y == _squarePointOne.Y)
+                        {
+                            return Range.Between1and2;
+                        }
+                        else if(position.Y < _squarePointTwo.Y && position.Y > _squarePointThree.Y && position.Z == _squarePointTwo.Z)
+                        {
+                            return Range.Between2and3;
+                        }
+                        else if(position.Z < _squarePointThree.Z && position.Z > _squarePointFour.Z && position.Y == _squarePointThree.Y)
+                        {
+                            return Range.Between3and4;
+                        }
+                        else if(position.Y > _squarePointFour.Y && position.Y < _squarePointOne.Y && position.Z == _squarePointFour.Z)
+                        {
+                            return Range.Between4and1;
+                        }
+                        break;
+                    case Axes.Y:
+                        break;
+                    case Axes.Z:
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            enum Range
+            {
+                Between1and2,
+                Between2and3,
+                Between3and4,
+                Between4and1
+            }
+        }
+
+        struct Square
+        {
+            public Position PositionOne
+            {
+                get;
+                set;
+            }
+
+            public Position PositionTwo
+            {
+                get;
+                set;
+            }
+
+            public Position PositionThree
+            {
+                get;
+                set;
+            }
+
+            public Position PositionFour
+            {
+                get;
+                set;
+            }
+
+            public IEnumerable<Position> PositionsInSquare
+            {
+                get;
+                set;
             }
         } 
 
