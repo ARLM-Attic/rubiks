@@ -135,49 +135,86 @@ namespace RubiksCore
         //TODO: Make this for other cubes that are not 3x3x3
         private IEnumerable<Square> GetSquares(int numberOfLayersDeep)
         {
-            throw new NotImplementedException();
             int max = _parentCubeSize - 1;
+            List<Square> squares = new List<Square>();
             for (int layer = 0; layer <= numberOfLayersDeep; layer++)
             {
+                Position positionOne = default(Position);
+                Position positionTwo = default(Position);
+                Position positionThree = default(Position);
+                Position positionFour = default(Position);
                 int fixedValue = 0;
                 switch (FaceDirection)
                 {
                     case RubiksDirection.Front:
                         fixedValue = _parentCubeSize - 1 - layer;
-                        Position positionOne = new Position() { X = 0, Y = fixedValue, Z = 0 };
-                        Position positionTwo = new Position() { X = 0, Y = fixedValue, Z = max };
-                        Position positionThree = new Position() { X = max, Y = fixedValue, Z = max };
-                        Position positionFour = new Position() { X = max, Y = fixedValue, Z = 0 };
-                        HashSet<Position> squarePoints = new HashSet<Position>();
-                        PositionMover mover = new PositionMover(positionOne, positionOne, positionTwo, positionThree, positionFour);
-                        squarePoints.Add(positionOne);
-                        Position next = default(Position);
-                        while (!next.Equals(positionOne))
-                        {
-                            next = mover.Move(1);
-                            if(!next.Equals(positionOne))
-                                squarePoints.Add(next);
-                        }
+                        positionOne = new Position() { X = 0, Y = fixedValue, Z = 0 };
+                        positionTwo = new Position() { X = 0, Y = fixedValue, Z = max };
+                        positionThree = new Position() { X = max, Y = fixedValue, Z = max };
+                        positionFour = new Position() { X = max, Y = fixedValue, Z = 0 };
                         break;
                     case RubiksDirection.Back:
                         fixedValue = layer;
+                        positionOne = new Position() { X = 0, Y = fixedValue, Z = 0 };
+                        positionTwo = new Position() { X = 0, Y = fixedValue, Z = max };
+                        positionThree = new Position() { X = max, Y = fixedValue, Z = max };
+                        positionFour = new Position() { X = max, Y = fixedValue, Z = 0 };
                         break;
                     case RubiksDirection.Up:
                         fixedValue = _parentCubeSize - 1 - layer;
+                        positionOne = new Position() { X = 0, Y = max, Z = fixedValue };
+                        positionTwo = new Position() { X = 0, Y = 0, Z = fixedValue };
+                        positionThree = new Position() { X = max, Y = 0, Z = fixedValue };
+                        positionFour = new Position() { X = max, Y = max, Z = fixedValue };
                         break;
                     case RubiksDirection.Down:
                         fixedValue = layer;
+                        positionOne = new Position() { X = 0, Y = max, Z = fixedValue };
+                        positionTwo = new Position() { X = 0, Y = 0, Z = fixedValue };
+                        positionThree = new Position() { X = max, Y = 0, Z = fixedValue };
+                        positionFour = new Position() { X = max, Y = max, Z = fixedValue };
                         break;
                     case RubiksDirection.Left:
                         fixedValue = layer;
+                        positionOne = new Position() { X = fixedValue, Y = max, Z = 0 };
+                        positionTwo = new Position() { X = fixedValue, Y = max, Z = max };
+                        positionThree = new Position() { X = fixedValue, Y = 0, Z = max };
+                        positionFour = new Position() { X = fixedValue, Y = 0, Z = 0 };
                         break;
                     case RubiksDirection.Right:
                         fixedValue = _parentCubeSize - 1 - layer;
+                        positionOne = new Position() { X = fixedValue, Y = max, Z = 0 };
+                        positionTwo = new Position() { X = fixedValue, Y = max, Z = max };
+                        positionThree = new Position() { X = fixedValue, Y = 0, Z = max };
+                        positionFour = new Position() { X = fixedValue, Y = 0, Z = 0 };
                         break;
                     default:
                         break;
                 }
+
+                HashSet<Position> squarePoints = new HashSet<Position>();
+                PositionMover mover = new PositionMover(positionOne, positionOne, positionTwo, positionThree, positionFour);
+                squarePoints.Add(positionOne);
+                Position next = default(Position);
+                while (!next.Equals(positionOne))
+                {
+                    next = mover.Move(1);
+                    if (!next.Equals(positionOne))
+                        squarePoints.Add(next);
+                }
+                squares.Add
+                    (
+                        new Square()
+                        {
+                            PositionOne = positionOne,
+                            PositionTwo = positionTwo,
+                            PositionThree = positionThree,
+                            PositionFour = positionFour,
+                            PositionsInSquare = squarePoints
+                        }
+                    );
             }
+            return squares;
         }
 
         #endregion
@@ -325,37 +362,40 @@ namespace RubiksCore
                     MoveUp();
                 }
 
-                if (_pointToMove.Equals(_squarePointTwo))
+                else if (_pointToMove.Equals(_squarePointTwo))
                 {
                     MoveRight();
                 }
 
-                if (_pointToMove.Equals(_squarePointThree))
+                else if (_pointToMove.Equals(_squarePointThree))
                 {
                     MoveDown();
                 }
 
-                if (_pointToMove.Equals(_squarePointFour))
+                else if (_pointToMove.Equals(_squarePointFour))
                 {
                     MoveLeft();
                 }
 
-                switch (DetermineRange(_pointToMove))
+                else
                 {
-                    case Range.Between1and2:
-                        MoveUp();
-                        break;
-                    case Range.Between2and3:
-                        MoveRight();
-                        break;
-                    case Range.Between3and4:
-                        MoveDown();
-                        break;
-                    case Range.Between4and1:
-                        MoveLeft();
-                        break;
-                    default:
-                        break;
+                    switch (DetermineRange(_pointToMove))
+                    {
+                        case Range.Between1and2:
+                            MoveUp();
+                            break;
+                        case Range.Between2and3:
+                            MoveRight();
+                            break;
+                        case Range.Between3and4:
+                            MoveDown();
+                            break;
+                        case Range.Between4and1:
+                            MoveLeft();
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 
             }
@@ -419,7 +459,7 @@ namespace RubiksCore
                 switch (_axisOfRotation)
                 {
                     case Axes.X:
-                        _pointToMove.X++;
+                        _pointToMove.Y++;
                         break;
                     case Axes.Y:
                         _pointToMove.X--;
@@ -434,7 +474,6 @@ namespace RubiksCore
 
             private Range DetermineRange(Position position)
             {
-                throw new NotImplementedException();
                 switch (_axisOfRotation)
                 {
                     case Axes.X:
@@ -454,13 +493,54 @@ namespace RubiksCore
                         {
                             return Range.Between4and1;
                         }
-                        break;
+                        else
+                        {
+                            throw new InvalidOperationException("Cannot determine where point is.");
+                        }
                     case Axes.Y:
-                        break;
+                        if(position.Z > _squarePointOne.Z && position.Z < _squarePointTwo.Z && position.X == _squarePointOne.X)
+                        {
+                            return Range.Between1and2;
+                        }
+                        else if(position.X > _squarePointTwo.X && position.X < _squarePointThree.X && position.Z == _squarePointTwo.Z)
+                        {
+                            return Range.Between2and3;
+                        }
+                        else if(position.Z < _squarePointThree.Z && position.Z > _squarePointFour.Z && position.X == _squarePointThree.X)
+                        {
+                            return Range.Between3and4;
+                        }
+                        else if(position.X < _squarePointFour.X && position.X > _squarePointOne.X && _squarePointOne.Z == _squarePointFour.Z)
+                        {
+                            return Range.Between4and1;
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("Cannot determine where point is.");
+                        }
                     case Axes.Z:
-                        break;
+                        if(position.Y < _squarePointOne.Y && position.Y > _squarePointTwo.Y && position.X == _squarePointOne.X)
+                        {
+                            return Range.Between1and2;
+                        }
+                        else if(position.X > _squarePointTwo.X && position.X < _squarePointThree.X && position.Y == _squarePointTwo.Y)
+                        {
+                            return Range.Between2and3;
+                        }
+                        else if(position.Y > _squarePointThree.Y && position.Y < _squarePointFour.Y && position.X == _squarePointThree.X)
+                        {
+                            return Range.Between3and4;
+                        }
+                        else if(position.X < _squarePointFour.X && position.X > _squarePointOne.X && position.Y == _squarePointFour.Y)
+                        {
+                            return Range.Between4and1;
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException("Cannot determine where point is");
+                        }
                     default:
-                        break;
+                        throw new InvalidOperationException("Cannot determine range with unknown axis of rotation.");
                 }
             }
 

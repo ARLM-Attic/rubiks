@@ -575,13 +575,13 @@ namespace RubiksCore.Test
             expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 1 }, new Position() { X = 1, Y = 2, Z = 2 });
             expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 2 }, new Position() { X = 2, Y = 2, Z = 2 });
             expectedPositions.Add(new Position() { X = 1, Y = 2, Z = 0 }, new Position() { X = 0, Y = 2, Z = 1 });
-            expectedPositions.Add(new Position() { X = 1, Y = 2, Z = 1 }, new Position() { X = 1, Y = 2, Z = 1 });
             expectedPositions.Add(new Position() { X = 1, Y = 2, Z = 2 }, new Position() { X = 2, Y = 2, Z = 1 });
             expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 0 }, new Position() { X = 0, Y = 2, Z = 0 });
             expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 1 }, new Position() { X = 1, Y = 2, Z = 0 });
             expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 2 }, new Position() { X = 2, Y = 2, Z = 0 });
+            HashSet<KeyValuePair<Position, Position>> expectedPositionsHashSet = new HashSet<KeyValuePair<Position, Position>>(expectedPositions.ToList());
 
-            Assert.IsTrue(positions.SequenceEqual(expectedPositions));
+            Assert.IsTrue(expectedPositionsHashSet.SetEquals(positions));
         }
 
         [TestMethod]
@@ -596,13 +596,13 @@ namespace RubiksCore.Test
             expectedPositions.Add(new Position() { X = 1, Y = 0, Z = 2 }, new Position() { X = 2, Y = 1, Z = 2 });
             expectedPositions.Add(new Position() { X = 2, Y = 0, Z = 2 }, new Position() { X = 2, Y = 2, Z = 2 });
             expectedPositions.Add(new Position() { X = 0, Y = 1, Z = 2 }, new Position() { X = 1, Y = 0, Z = 2 });
-            expectedPositions.Add(new Position() { X = 1, Y = 1, Z = 2 }, new Position() { X = 1, Y = 1, Z = 2 });
             expectedPositions.Add(new Position() { X = 2, Y = 1, Z = 2 }, new Position() { X = 1, Y = 2, Z = 2 });
             expectedPositions.Add(new Position() { X = 0, Y = 2, Z = 2 }, new Position() { X = 0, Y = 0, Z = 2 });
             expectedPositions.Add(new Position() { X = 1, Y = 2, Z = 2 }, new Position() { X = 0, Y = 1, Z = 2 });
             expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 2 }, new Position() { X = 0, Y = 2, Z = 2 });
+            HashSet<KeyValuePair<Position, Position>> expectedPositionsHashSet = new HashSet<KeyValuePair<Position, Position>>(expectedPositions.ToList());
 
-            Assert.IsTrue(positions.SequenceEqual(expectedPositions));
+            Assert.IsTrue(expectedPositionsHashSet.SetEquals(positions));
         }
 
         [TestMethod]
@@ -617,13 +617,13 @@ namespace RubiksCore.Test
             expectedPositions.Add(new Position() { X = 2, Y = 1, Z = 0 }, new Position() { X = 2, Y = 2, Z = 1 });
             expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 0 }, new Position() { X = 2, Y = 2, Z = 2 });
             expectedPositions.Add(new Position() { X = 2, Y = 0, Z = 1 }, new Position() { X = 2, Y = 1, Z = 0 });
-            expectedPositions.Add(new Position() { X = 2, Y = 1, Z = 1 }, new Position() { X = 2, Y = 1, Z = 1 });
             expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 1 }, new Position() { X = 2, Y = 1, Z = 2 });
             expectedPositions.Add(new Position() { X = 2, Y = 0, Z = 2 }, new Position() { X = 2, Y = 0, Z = 0 });
             expectedPositions.Add(new Position() { X = 2, Y = 1, Z = 2 }, new Position() { X = 2, Y = 0, Z = 1 });
             expectedPositions.Add(new Position() { X = 2, Y = 2, Z = 2 }, new Position() { X = 2, Y = 0, Z = 2 });
+            HashSet<KeyValuePair<Position, Position>> expectedPositionsHashSet = new HashSet<KeyValuePair<Position, Position>>(expectedPositions.ToList());
 
-            Assert.IsTrue(positions.SequenceEqual(expectedPositions));
+            Assert.IsTrue(expectedPositionsHashSet.SetEquals(positions));
         }
     }
 }
