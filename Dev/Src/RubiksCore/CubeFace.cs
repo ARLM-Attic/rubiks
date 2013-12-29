@@ -132,7 +132,6 @@ namespace RubiksCore
             return _positions;
         }
 
-        //TODO: Make this for other cubes that are not 3x3x3
         private IEnumerable<Square> GetSquares(int numberOfLayersDeep)
         {
             int max = _parentCubeSize - 1;
@@ -195,7 +194,7 @@ namespace RubiksCore
                 HashSet<Position> squarePoints = new HashSet<Position>();
                 PositionMover mover = new PositionMover(positionOne, positionOne, positionTwo, positionThree, positionFour);
                 squarePoints.Add(positionOne);
-                Position next = default(Position);
+                Position next = new Position() { X = -1, Y = -1, Z = -1 };
                 while (!next.Equals(positionOne))
                 {
                     next = mover.Move(1);
