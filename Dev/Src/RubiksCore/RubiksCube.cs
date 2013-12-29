@@ -43,6 +43,14 @@ namespace RubiksCore
             }
         }
 
+        public IEnumerable<Cubie> Cubies
+        {
+            get
+            {
+                return _cubies;
+            }
+        }
+
         #endregion
 
         #region Methods \\ Basic Moves

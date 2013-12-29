@@ -1,6 +1,7 @@
-﻿namespace RubiksCore
+﻿using System.Collections.Generic;
+namespace RubiksCore
 {
-    public class Cubie
+    public class Cubie : IEqualityComparer<Cubie>
     {
         #region Properties
 
@@ -164,9 +165,9 @@
 
         public override bool Equals(object obj)
         {
-            if(obj is Cubie)
+            if (obj is Cubie)
             {
-                return GetHashCode().Equals(obj.GetHashCode());
+                return Equals(this, obj as Cubie);
             }
             else
             {
@@ -176,15 +177,13 @@
 
         public override int GetHashCode()
         {
-            int positionHash = Position.GetHashCode();
-            int frontSideHash = FrontSide.GetHashCode();
-            int backSideHash = BackSide.GetHashCode();
-            int rightSideHash = RightSide.GetHashCode();
-            int leftSideHash = LeftSide.GetHashCode();
-            int upSideHash = UpSide.GetHashCode();
-            int downSideHash = DownSide.GetHashCode();
+            return GetHashCode(this);
+        }
 
-            return positionHash + frontSideHash * 2 + backSideHash * 3 + rightSideHash * 4 + leftSideHash * 5 + upSideHash * 6 + downSideHash * 7;
+        public override string ToString()
+        {
+            return string.Format("{0}, Front: {1}, Back: {2}, Right: {3}, Left: {4}, Up: {5}, Down: {6}"
+                , Position, FrontSide, BackSide, RightSide, LeftSide, UpSide, DownSide);
         }
 
         #endregion
@@ -201,6 +200,37 @@
             DownSide = downSide;
             Position = postion;
         }
+
+        #endregion
+
+        #region Methods\\IEqualityComparer<Cubie>
+
+        public bool Equals(Cubie x, Cubie y)
+        {
+            bool arePositionsEqual = x.Position.Equals(y.Position);
+            bool areFrontSidesEqual = x.FrontSide.Equals(y.FrontSide);
+            bool areBackSidesEqual = x.BackSide.Equals(y.BackSide);
+            bool areUpSidesEqual = x.UpSide.Equals(y.UpSide);
+            bool areDownSidesEqual = x.DownSide.Equals(y.DownSide);
+            bool areRightSidesEqual = x.RightSide.Equals(y.RightSide);
+            bool areLeftSidesEqual = x.LeftSide.Equals(y.LeftSide);
+
+            return arePositionsEqual && areFrontSidesEqual && areBackSidesEqual && areUpSidesEqual && areDownSidesEqual 
+                && areRightSidesEqual && areLeftSidesEqual;
+        }
+
+        public int GetHashCode(Cubie cubie)
+        {
+            int positionHash = cubie.Position.GetHashCode();
+            int frontSideHash = cubie.FrontSide.GetHashCode();
+            int backSideHash = cubie.BackSide.GetHashCode();
+            int rightSideHash = cubie.RightSide.GetHashCode();
+            int leftSideHash = cubie.LeftSide.GetHashCode();
+            int upSideHash = cubie.UpSide.GetHashCode();
+            int downSideHash = cubie.DownSide.GetHashCode();
+
+            return positionHash + frontSideHash * 2 + backSideHash * 3 + rightSideHash * 4 + leftSideHash * 5 + upSideHash * 6 + downSideHash * 7;
+        } 
 
         #endregion
     }
