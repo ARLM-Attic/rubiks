@@ -57,34 +57,34 @@ namespace RubiksCore
 
         #region Methods \\ Basic Moves
 
-        public void TurnFront(TurningDirection direction = TurningDirection.ThreeoClock)
+        public void TurnFront(TurningDirection direction = TurningDirection.ThreeoClock, int layersDeep = 0)
         {
-            Turn(RubiksDirection.Front, direction);
+            Turn(RubiksDirection.Front, direction, layersDeep);
         }
 
-        public void TurnBack(TurningDirection direction = TurningDirection.ThreeoClock)
+        public void TurnBack(TurningDirection direction = TurningDirection.ThreeoClock, int layersDeep = 0)
         {
-            Turn(RubiksDirection.Back, direction);
+            Turn(RubiksDirection.Back, direction, layersDeep);
         }
 
-        public void TurnRight(TurningDirection direction = TurningDirection.ThreeoClock)
+        public void TurnRight(TurningDirection direction = TurningDirection.ThreeoClock, int layersDeep = 0)
         {
-            Turn(RubiksDirection.Right, direction);
+            Turn(RubiksDirection.Right, direction, layersDeep);
         }
 
-        public void TurnLeft(TurningDirection direction = TurningDirection.ThreeoClock)
+        public void TurnLeft(TurningDirection direction = TurningDirection.ThreeoClock, int layersDeep = 0)
         {
-            Turn(RubiksDirection.Left, direction);
+            Turn(RubiksDirection.Left, direction, layersDeep);
         }
 
-        public void TurnUp(TurningDirection direction = TurningDirection.ThreeoClock)
+        public void TurnUp(TurningDirection direction = TurningDirection.ThreeoClock, int layersDeep = 0)
         {
-            Turn(RubiksDirection.Up, direction);
+            Turn(RubiksDirection.Up, direction, layersDeep);
         }
 
-        public void TurnDown(TurningDirection direction = TurningDirection.ThreeoClock)
+        public void TurnDown(TurningDirection direction = TurningDirection.ThreeoClock, int layersDeep = 0)
         {
-            Turn(RubiksDirection.Down, direction);
+            Turn(RubiksDirection.Down, direction, layersDeep);
         }
 
         #endregion
