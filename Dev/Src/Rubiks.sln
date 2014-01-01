@@ -9,9 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCore", "RubiksCore\Ru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCore.Test", "RubiksCore.Test\RubiksCore.Test.csproj", "{010EBB4F-98E6-4031-9FF8-2429404EF61F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCore.SystemTest", "RubiksCore.SystemTest\RubiksCore.SystemTest.csproj", "{9F42F5F2-67B8-4BE9-9331-4714D7235BD1}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs30
 		SccLocalPath0 = .
@@ -24,6 +26,9 @@ Global
 		SccProjectUniqueName3 = RubiksCore.Test\\RubiksCore.Test.csproj
 		SccProjectName3 = RubiksCore.Test
 		SccLocalPath3 = RubiksCore.Test
+		SccProjectUniqueName4 = RubiksCore.SystemTest\\RubiksCore.SystemTest.csproj
+		SccProjectName4 = RubiksCore.SystemTest
+		SccLocalPath4 = RubiksCore.SystemTest
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +47,10 @@ Global
 		{010EBB4F-98E6-4031-9FF8-2429404EF61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{010EBB4F-98E6-4031-9FF8-2429404EF61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{010EBB4F-98E6-4031-9FF8-2429404EF61F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F42F5F2-67B8-4BE9-9331-4714D7235BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F42F5F2-67B8-4BE9-9331-4714D7235BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F42F5F2-67B8-4BE9-9331-4714D7235BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F42F5F2-67B8-4BE9-9331-4714D7235BD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
