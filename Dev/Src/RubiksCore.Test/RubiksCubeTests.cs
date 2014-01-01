@@ -2530,6 +2530,29 @@ namespace RubiksCore.Test
             //exercise
             Cubie cubie = cube[4, 4, 4];
         }
+
+        [TestMethod]
+        public void MakeRandomTurns_WhenNumberOfRandomTurnsIs100_ThenAllCubiesCoordinatesAreValid()
+        {
+            //setup
+            RubiksCube cube = new RubiksCube(null, 3);
+            Random faceDeterminator = new Random();
+            Random rotationDeterminator = new Random();
+            Random layerDeterminator = new Random();
+            //exercise
+            for(int i = 0; i < 100; i++)
+            {
+                RubiksDirection face = (RubiksDirection)faceDeterminator.Next(6);
+                TurningDirection direction = (TurningDirection)rotationDeterminator.Next(3);
+                int numberOfLayers = rotationDeterminator.Next(3);
+
+                cube.Turn(face, direction, numberOfLayers);
+            }
+
+            bool areAllCubiesInRange = cube.Cubies.All(cubie => cubie.Position.X <= 2 && cubie.Position.Y <= 2 && cubie.Position.Z <= 2);
+
+            Assert.IsTrue(areAllCubiesInRange);
+        }
     }
 
     class TestConfigurator : ICubieConfigurator
