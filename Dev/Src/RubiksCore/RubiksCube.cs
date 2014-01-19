@@ -171,7 +171,7 @@ namespace RubiksCore
 
             _parser = parser;
 
-            _cubies = new SolvedPuzzleCubieConfigurator().CreateCubies(cubeSize);
+            _cubies = configurator.CreateCubies(cubeSize);
         }
 
         #endregion

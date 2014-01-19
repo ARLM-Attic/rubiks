@@ -50,10 +50,12 @@
     <Compile Include="ICubieConfigurator.cs" />
     <Compile Include="INotationParser.cs" />
     <Compile Include="Position.cs" />
+    <Compile Include="PositionMover.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RubiksCube.cs" />
     <Compile Include="SingmasterNotationParser.cs" />
     <Compile Include="SolvedPuzzleCubieConfigurator.cs" />
+    <Compile Include="Square.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

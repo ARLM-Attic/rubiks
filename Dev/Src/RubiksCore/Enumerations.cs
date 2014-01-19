@@ -33,4 +33,16 @@
         Y,
         Z
     }
+
+    enum RelativePosition
+    {
+        OnPointOne,
+        Between1and2,
+        OnPointTwo,
+        Between2and3,
+        OnPointThree,
+        Between3and4,
+        OnPointFour,
+        Between4and1
+    }
 }

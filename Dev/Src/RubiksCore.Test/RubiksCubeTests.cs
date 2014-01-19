@@ -2535,7 +2535,7 @@ namespace RubiksCore.Test
         public void MakeRandomTurns_WhenNumberOfRandomTurnsIs100_ThenAllCubiesCoordinatesAreValid()
         {
             //setup
-            RubiksCube cube = new RubiksCube(null, 3);
+            RubiksCube cube = new RubiksCube(null,new TestConfigurator(), 3);
             Random faceDeterminator = new Random();
             Random rotationDeterminator = new Random();
             Random layerDeterminator = new Random();
