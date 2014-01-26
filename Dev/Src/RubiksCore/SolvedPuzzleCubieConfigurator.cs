@@ -11,492 +11,526 @@ namespace RubiksCore
     /// </summary>
     public class SolvedPuzzleCubieConfigurator : ICubieConfigurator
     {
+        readonly RubiksColor _frontColor;
+        readonly RubiksColor _backColor;
+        readonly RubiksColor _rightColor;
+        readonly RubiksColor _leftColor;
+        readonly RubiksColor _upColor;
+        readonly RubiksColor _downColor;
+        readonly IDictionary<RubiksDirection,Func<RelativePosition, Position, Cubie>> _cubieCreators;
+
+        public SolvedPuzzleCubieConfigurator(RubiksColor frontColor = RubiksColor.White, RubiksColor backColor = RubiksColor.Yellow, RubiksColor rightColor = RubiksColor.Green, RubiksColor leftColor = RubiksColor.Blue, RubiksColor upColor = RubiksColor.Red, RubiksColor downColor = RubiksColor.Orange)
+        {
+            _frontColor = frontColor;
+            _backColor = backColor;
+            _rightColor = rightColor;
+            _leftColor = leftColor;
+            _upColor = upColor;
+            _downColor = downColor;
+
+            _cubieCreators = new Dictionary<RubiksDirection,Func<RelativePosition, Position, Cubie>>()
+            {
+                {RubiksDirection.Front, CreateFrontCubie},
+                {RubiksDirection.Back, CreateBackCubie},
+                {RubiksDirection.Right, CreateRightCubie},
+                {RubiksDirection.Left, CreateLeftCubie},
+                {RubiksDirection.Up, CreateUpCubie},
+                {RubiksDirection.Down, CreateDownCubie}
+            };
+        }
+
         public IEnumerable<Cubie> CreateCubies(int cubeSize)
         {
-            if(cubeSize != 3)
+            CubeFace frontFace = new CubeFace(RubiksDirection.Front, cubeSize);
+            CubeFace backFace = new CubeFace(RubiksDirection.Back, cubeSize);
+            CubeFace rightFace = new CubeFace(RubiksDirection.Right, cubeSize);
+            CubeFace leftFace = new CubeFace(RubiksDirection.Left, cubeSize);
+            CubeFace upFace = new CubeFace(RubiksDirection.Up, cubeSize);
+            CubeFace downFace = new CubeFace(RubiksDirection.Down, cubeSize);
+
+            HashSet<Cubie> cubies = new HashSet<Cubie>();
+
+            PopulateSingleFaceCubies(frontFace, ref cubies);
+            PopulateDoubleAndTripleFaceCubies(frontFace, ref cubies);
+
+            PopulateSingleFaceCubies(backFace, ref cubies);
+            PopulateDoubleAndTripleFaceCubies(backFace, ref cubies);
+
+            PopulateSingleFaceCubies(rightFace, ref cubies);
+            PopulateDoubleAndTripleFaceCubies(rightFace, ref cubies);
+
+            PopulateSingleFaceCubies(leftFace, ref cubies);
+            PopulateDoubleAndTripleFaceCubies(leftFace, ref cubies);
+
+            PopulateSingleFaceCubies(upFace, ref cubies);
+            //PopulateDoubleAndTripleFaceCubies(upFace, ref cubies); //Unnecessary computation
+
+            PopulateSingleFaceCubies(downFace, ref cubies);
+            //PopulateDoubleAndTripleFaceCubies(downFace, ref cubies); //Unnecessary computation
+
+            HashSet<Position> allPositions = new HashSet<Position>(frontFace.GetPositionsOfLayersBeneathFace(cubeSize - 1));
+            IEnumerable<Position> existingPositions = cubies.Select(cube => cube.Position);
+
+            allPositions.ExceptWith(existingPositions);
+
+            foreach(Position position in allPositions)
             {
-                throw new NotSupportedException("Currently we are only supporting the standard 3x3x3 rubiks cube.");
+                cubies.Add
+                    (   
+                        new Cubie
+                        (
+                            frontSide: null,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: null,
+                            postion: position
+                        )
+                    );
             }
 
-            #region 27 Cube Configuration
+            return cubies;
+        }
 
-            Cubie cubie000 = new Cubie
-                    (
-                        frontSide: null,
-                        backSide: RubiksColor.Green,
-                        rightSide: null,
-                        leftSide: RubiksColor.Yellow,
-                        upSide: null,
-                        downSide: RubiksColor.Orange,
-                        postion:
-                            new Position()
-                            {
-                                X = 0,
-                                Y = 0,
-                                Z = 0
-                            }
-                    );
+        private void PopulateSingleFaceCubies(CubeFace face, ref HashSet<Cubie> cubies)
+        {
+            Square square = face.GetSquares(0).First();
 
-            Cubie cubie100 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: RubiksColor.Green,
-                    rightSide: null,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: RubiksColor.Orange,
-                    postion:
-                        new Position()
-                        {
-                            X = 1,
-                            Y = 0,
-                            Z = 0
-                        }
-                );
+            HashSet<Position> allFacePositions = new HashSet<Position>(face.CubiePositions);
+            allFacePositions.ExceptWith(square.PositionsInSquare);
 
-            Cubie cubie200 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: RubiksColor.Green,
-                    rightSide: RubiksColor.White,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: RubiksColor.Orange,
-                    postion:
-                        new Position()
-                        {
-                            X = 2,
-                            Y = 0,
-                            Z = 0
-                        }
-                );
+            foreach (Position position in allFacePositions)
+            {
+                Cubie singleFacedCubie = null;
+                switch (face.FaceDirection)
+                {
+                    case RubiksDirection.Front:
+                        singleFacedCubie = new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: null,
+                            postion: position
+                        );
+                        break;
+                    case RubiksDirection.Back:
+                        singleFacedCubie = new Cubie
+                        (
+                            frontSide: null,
+                            backSide: _backColor,
+                            rightSide: null,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: null,
+                            postion: position
+                        );
+                        break;
+                    case RubiksDirection.Up:
+                        singleFacedCubie = new Cubie
+                        (
+                            frontSide: null,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: position
+                        );
+                        break;
+                    case RubiksDirection.Down:
+                        singleFacedCubie = new Cubie
+                        (
+                            frontSide: null,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: _downColor,
+                            postion: position
+                        );
+                        break;
+                    case RubiksDirection.Left:
+                        singleFacedCubie = new Cubie
+                        (
+                            frontSide: null,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: _leftColor,
+                            upSide: null,
+                            downSide: null,
+                            postion: position
+                        );
+                        break;
+                    case RubiksDirection.Right:
+                        singleFacedCubie = new Cubie
+                        (
+                            frontSide: null,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: null,
+                            postion: position
+                        );
+                        break;
+                    default:
+                        break;
+                }
 
-            Cubie cubie010 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: RubiksColor.Yellow,
-                    upSide: null,
-                    downSide: RubiksColor.Orange,
-                    postion:
-                        new Position()
-                        {
-                            X = 0,
-                            Y = 1,
-                            Z = 0
-                        }
-                );
+                cubies.Add(singleFacedCubie);
+            }
+        }
 
-            Cubie cubie110 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: RubiksColor.Orange,
-                    postion:
-                        new Position()
-                        {
-                            X = 1,
-                            Y = 1,
-                            Z = 0
-                        }
-                );
+        private void PopulateDoubleAndTripleFaceCubies(CubeFace face, ref HashSet<Cubie> cubies)
+        {
+            PositionMover faceMover = new PositionMover(face.GetSquares(0).First());
+            Func<RelativePosition, Position, Cubie> cubieCreator = _cubieCreators[face.FaceDirection];
+            do
+            {
+                faceMover.Move(1);
+                cubies.Add(cubieCreator(faceMover.CurrentRelativePosition, faceMover.CurrentPosition));
+            }
+            while (faceMover.CurrentRelativePosition != RelativePosition.OnPointOne);
+        }
 
-            Cubie cubie210 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: null,
-                    rightSide: RubiksColor.White,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: RubiksColor.Orange,
-                    postion:
-                        new Position()
-                        {
-                            X = 2,
-                            Y = 1,
-                            Z = 0
-                        }
-                );
+        private Cubie CreateFrontCubie(RelativePosition relativePosition, Position cubiePosition)
+        {
+            switch (relativePosition)
+            {
+                case RelativePosition.OnPointOne:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: _leftColor,
+                            upSide: null,
+                            downSide: _downColor,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between1and2:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: _leftColor,
+                            upSide: null,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.OnPointTwo:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: _leftColor,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between2and3:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.OnPointThree:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between3and4:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.OnPointFour:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: _downColor,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between4and1:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: _downColor,
+                            postion: cubiePosition
+                        );
+                default:
+                    return null;
+            }
+        }
 
-            Cubie cubie020 = new Cubie
-                (
-                    frontSide: RubiksColor.Blue,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: RubiksColor.Yellow,
-                    upSide: null,
-                    downSide: RubiksColor.Orange,
-                    postion:
-                        new Position()
-                        {
-                            X = 0,
-                            Y = 2,
-                            Z = 0
-                        }
-                );
+        private Cubie CreateBackCubie(RelativePosition relativePosition, Position cubiePosition)
+        {
+            Cubie frontCubie = CreateFrontCubie(relativePosition, cubiePosition);
+            return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: _backColor,
+                            rightSide: frontCubie.RightSide,
+                            leftSide: frontCubie.LeftSide,
+                            upSide: frontCubie.UpSide,
+                            downSide: frontCubie.DownSide,
+                            postion: cubiePosition
+                        );
+        }
+        
+        private Cubie CreateRightCubie(RelativePosition relativePosition, Position cubiePosition)
+        {
+            switch (relativePosition)
+            {
+                case RelativePosition.OnPointOne:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: _downColor,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between1and2:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.OnPointTwo:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between2and3:
+                    return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.OnPointThree:
+                    return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: _backColor,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between3and4:
+                    return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: _backColor,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.OnPointFour:
+                    return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: _backColor,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: _downColor,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between4and1:
+                    return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: null,
+                            downSide: _downColor,
+                            postion: cubiePosition
+                        );
+                default:
+                    return null;
+            }
+        }
 
-            Cubie cubie120 = new Cubie
-                (
-                    frontSide: RubiksColor.Blue,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: RubiksColor.Orange,
-                    postion:
-                        new Position()
-                        {
-                            X = 1,
-                            Y = 2,
-                            Z = 0
-                        }
-                );
+        private Cubie CreateLeftCubie(RelativePosition relativePosition, Position cubiePosition)
+        {
+            Cubie rightCubie = CreateRightCubie(relativePosition, cubiePosition);
+            return new Cubie
+                        (
+                            frontSide: rightCubie.FrontSide,
+                            backSide: rightCubie.BackSide,
+                            rightSide: null,
+                            leftSide: _leftColor,
+                            upSide: rightCubie.UpSide,
+                            downSide: rightCubie.DownSide,
+                            postion: cubiePosition
+                        );
+        }
 
-            Cubie cubie220 = new Cubie
-                (
-                    frontSide: RubiksColor.Blue,
-                    backSide: null,
-                    rightSide: RubiksColor.White,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: RubiksColor.Orange,
-                    postion:
-                        new Position()
-                        {
-                            X = 2,
-                            Y = 2,
-                            Z = 0
-                        }
-                );
+        private Cubie CreateUpCubie(RelativePosition relativePosition, Position cubiePosition)
+        {
+            switch (relativePosition)
+            {
+                case RelativePosition.OnPointOne:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: _leftColor,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between1and2:
+                    return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: _leftColor,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.OnPointTwo:
+                    return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: _backColor,
+                            rightSide: null,
+                            leftSide: _leftColor,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between2and3:
+                    return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: _backColor,
+                            rightSide: null,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.OnPointThree:
+                    return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: _backColor,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between3and4:
+                    return new Cubie
+                        (
+                            frontSide: null,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.OnPointFour:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: _rightColor,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                case RelativePosition.Between4and1:
+                    return new Cubie
+                        (
+                            frontSide: _frontColor,
+                            backSide: null,
+                            rightSide: null,
+                            leftSide: null,
+                            upSide: _upColor,
+                            downSide: null,
+                            postion: cubiePosition
+                        );
+                default:
+                    return null;
+            }
+        }
 
-            //z = 1
-
-            Cubie cubie001 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: RubiksColor.Green,
-                    rightSide: null,
-                    leftSide: RubiksColor.Yellow,
-                    upSide: null,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 0,
-                            Y = 0,
-                            Z = 1
-                        }
-                );
-
-            Cubie cubie101 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: RubiksColor.Green,
-                    rightSide: null,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 1,
-                            Y = 0,
-                            Z = 1
-                        }
-                );
-
-            Cubie cubie201 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: RubiksColor.Green,
-                    rightSide: RubiksColor.White,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 2,
-                            Y = 0,
-                            Z = 1
-                        }
-                );
-
-            Cubie cubie011 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: RubiksColor.Yellow,
-                    upSide: null,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 0,
-                            Y = 1,
-                            Z = 1
-                        }
-                );
-
-            Cubie cubie111 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 1,
-                            Y = 1,
-                            Z = 1
-                        }
-                );
-
-            Cubie cubie211 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: null,
-                    rightSide: RubiksColor.White,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 2,
-                            Y = 1,
-                            Z = 1
-                        }
-                );
-
-            Cubie cubie021 = new Cubie
-                (
-                    frontSide: RubiksColor.Blue,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: RubiksColor.Yellow,
-                    upSide: null,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 0,
-                            Y = 2,
-                            Z = 1
-                        }
-                );
-
-            Cubie cubie121 = new Cubie
-                (
-                    frontSide: RubiksColor.Blue,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 1,
-                            Y = 2,
-                            Z = 1
-                        }
-                );
-
-            Cubie cubie221 = new Cubie
-                (
-                    frontSide: RubiksColor.Blue,
-                    backSide: null,
-                    rightSide: RubiksColor.White,
-                    leftSide: null,
-                    upSide: null,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 2,
-                            Y = 2,
-                            Z = 1
-                        }
-                );
-
-            //z = 2
-            Cubie cubie002 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: RubiksColor.Green,
-                    rightSide: null,
-                    leftSide: RubiksColor.Yellow,
-                    upSide: RubiksColor.Red,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 0,
-                            Y = 0,
-                            Z = 2
-                        }
-                );
-
-            Cubie cubie102 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: RubiksColor.Green,
-                    rightSide: null,
-                    leftSide: null,
-                    upSide: RubiksColor.Red,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 1,
-                            Y = 0,
-                            Z = 2
-                        }
-                );
-
-            Cubie cubie202 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: RubiksColor.Green,
-                    rightSide: RubiksColor.White,
-                    leftSide: null,
-                    upSide: RubiksColor.Red,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 2,
-                            Y = 0,
-                            Z = 2
-                        }
-                );
-
-            Cubie cubie012 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: RubiksColor.Yellow,
-                    upSide: RubiksColor.Red,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 0,
-                            Y = 1,
-                            Z = 2
-                        }
-                );
-
-            Cubie cubie112 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: null,
-                    upSide: RubiksColor.Red,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 1,
-                            Y = 1,
-                            Z = 2
-                        }
-                );
-
-            Cubie cubie212 = new Cubie
-                (
-                    frontSide: null,
-                    backSide: null,
-                    rightSide: RubiksColor.White,
-                    leftSide: null,
-                    upSide: RubiksColor.Red,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 2,
-                            Y = 1,
-                            Z = 2
-                        }
-                );
-
-            Cubie cubie022 = new Cubie
-                (
-                    frontSide: RubiksColor.Blue,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: RubiksColor.Yellow,
-                    upSide: RubiksColor.Red,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 0,
-                            Y = 2,
-                            Z = 2
-                        }
-                );
-
-            Cubie cubie122 = new Cubie
-                (
-                    frontSide: RubiksColor.Blue,
-                    backSide: null,
-                    rightSide: null,
-                    leftSide: null,
-                    upSide: RubiksColor.Red,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 1,
-                            Y = 2,
-                            Z = 2
-                        }
-                );
-
-            Cubie cubie222 = new Cubie
-                (
-                    frontSide: RubiksColor.Blue,
-                    backSide: null,
-                    rightSide: RubiksColor.White,
-                    leftSide: null,
-                    upSide: RubiksColor.Red,
-                    downSide: null,
-                    postion:
-                        new Position()
-                        {
-                            X = 2,
-                            Y = 2,
-                            Z = 2
-                        }
-                );
-
-            #endregion
-
-            List<Cubie> threeByThreeByThreeCube = new List<Cubie>() 
-            { 
-                //z=0
-                cubie000, cubie100, cubie200, cubie010, cubie110, cubie210, cubie020, cubie120, cubie220,
- 
-                //z=1
-                cubie001, cubie101, cubie201, cubie011, cubie111, cubie211, cubie021, cubie121, cubie221,
-
-                //z = 2
-                cubie002, cubie102, cubie202, cubie012, cubie112, cubie212, cubie022, cubie122, cubie222
-            };
-
-            return threeByThreeByThreeCube;
+        private Cubie CreateDownCubie(RelativePosition relativePosition, Position cubiePosition)
+        {
+            Cubie upCubie = CreateUpCubie(relativePosition, cubiePosition);
+            return new Cubie
+                        (
+                            frontSide: upCubie.FrontSide,
+                            backSide: upCubie.BackSide,
+                            rightSide: upCubie.RightSide,
+                            leftSide: upCubie.LeftSide,
+                            upSide: null,
+                            downSide: _downColor,
+                            postion: cubiePosition
+                        );
         }
     }
 }

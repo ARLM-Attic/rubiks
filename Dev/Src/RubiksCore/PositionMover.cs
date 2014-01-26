@@ -67,6 +67,11 @@ namespace RubiksCore
 
         }
 
+        public PositionMover(Square square)
+            : this(square.PositionOne, square.PositionOne, square.PositionTwo, square.PositionThree, square.PositionFour)
+        {
+
+        }
         #endregion
 
         #region Methods
