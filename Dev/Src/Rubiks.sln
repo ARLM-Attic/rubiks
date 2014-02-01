@@ -11,9 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCore.Test", "RubiksCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksCore.SystemTest", "RubiksCore.SystemTest\RubiksCore.SystemTest.csproj", "{9F42F5F2-67B8-4BE9-9331-4714D7235BD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksUIControls", "RubiksUIControls\RubiksUIControls.csproj", "{457A4BE9-7662-4571-8E42-D0E20CBC7FED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksUIControls.SystemTest", "RubiksUIControls.SystemTest\RubiksUIControls.SystemTest.csproj", "{08B04F53-A5F1-47EA-B0E2-3F6E4C6A0C52}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 7
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs30
 		SccLocalPath0 = .
@@ -29,6 +33,12 @@ Global
 		SccProjectUniqueName4 = RubiksCore.SystemTest\\RubiksCore.SystemTest.csproj
 		SccProjectName4 = RubiksCore.SystemTest
 		SccLocalPath4 = RubiksCore.SystemTest
+		SccProjectUniqueName5 = RubiksUIControls\\RubiksUIControls.csproj
+		SccProjectName5 = RubiksUIControls
+		SccLocalPath5 = RubiksUIControls
+		SccProjectUniqueName6 = RubiksUIControls.SystemTest\\RubiksUIControls.SystemTest.csproj
+		SccProjectName6 = RubiksUIControls.SystemTest
+		SccLocalPath6 = RubiksUIControls.SystemTest
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +61,14 @@ Global
 		{9F42F5F2-67B8-4BE9-9331-4714D7235BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F42F5F2-67B8-4BE9-9331-4714D7235BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F42F5F2-67B8-4BE9-9331-4714D7235BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{457A4BE9-7662-4571-8E42-D0E20CBC7FED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{457A4BE9-7662-4571-8E42-D0E20CBC7FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{457A4BE9-7662-4571-8E42-D0E20CBC7FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{457A4BE9-7662-4571-8E42-D0E20CBC7FED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08B04F53-A5F1-47EA-B0E2-3F6E4C6A0C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08B04F53-A5F1-47EA-B0E2-3F6E4C6A0C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08B04F53-A5F1-47EA-B0E2-3F6E4C6A0C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08B04F53-A5F1-47EA-B0E2-3F6E4C6A0C52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

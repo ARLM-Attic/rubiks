@@ -53,6 +53,14 @@ namespace RubiksCore
             }
         }
 
+        public int CubeSize
+        {
+            get
+            {
+                return _cubeSize;
+            }
+        }
+
         #endregion
 
         #region Methods \\ Basic Moves

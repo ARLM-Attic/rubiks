@@ -1,0 +1,9 @@
+﻿<Window x:Class="RubiksUIControls.SystemTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:rubiks="clr-namespace:RubiksUIControls;assembly=RubiksUIControls"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <rubiks:TwoDCube Cube="{Binding RubiksCube}" />
+    </Grid>
+</Window>
