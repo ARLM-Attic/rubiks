@@ -61,7 +61,10 @@ namespace RubiksUIControls
                 _cubeGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(_gridSquareSize) });
             }
 
-            CreateRect(Colors.BlanchedAlmond, 2, 9);
+            foreach(TwoDPosition position in CreatePositionsForCube())
+            {
+                CreateRect(cube.GetColor(position), position.Y, position.X);
+            }
         }
 
         private void CreateRect(Color color, int rowNumber, int columnNumber)
@@ -79,6 +82,23 @@ namespace RubiksUIControls
             _cubeGrid.Children.Add(border);
             Grid.SetColumn(border, columnNumber);
             Grid.SetRow(border, rowNumber);
+        }
+
+        private IEnumerable<TwoDPosition> CreatePositionsForCube()
+        {
+            List<TwoDPosition> positions = new List<TwoDPosition>();
+
+            for (int y = Cube.CubeSize - 1; y <= Cube.CubeSize * 2 - 1; y++)
+            {
+                for(int x = 0; x < Cube.CubeSize * 4 - 1; x++)
+                {
+                    positions.Add(new TwoDPosition(x, y));
+                }
+            }
+
+
+
+            return positions;
         }
     }
 }

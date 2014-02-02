@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="TwoDPosition.cs" />
+    <Compile Include="RubiksCubeExtensions.cs" />
     <Compile Include="TwoDCube.xaml.cs">
       <DependentUpon>TwoDCube.xaml</DependentUpon>
       <SubType>Code</SubType>
