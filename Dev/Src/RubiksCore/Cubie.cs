@@ -159,6 +159,26 @@ namespace RubiksCore
             }
         }
 
+        public RubiksColor? GetColor(RubiksDirection face)
+        {
+            switch (face)
+            {
+                case RubiksDirection.Front:
+                    return FrontSide;
+                case RubiksDirection.Back:
+                    return BackSide;
+                case RubiksDirection.Up:
+                    return UpSide;
+                case RubiksDirection.Down:
+                    return DownSide;
+                case RubiksDirection.Left:
+                    return LeftSide;
+                case RubiksDirection.Right:
+                    return RightSide;
+                default:
+                    return null;
+            }
+        }
         #endregion
 
         #region Methods\\Overrides
