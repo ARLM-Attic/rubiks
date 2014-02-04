@@ -88,15 +88,28 @@ namespace RubiksUIControls
         {
             List<TwoDPosition> positions = new List<TwoDPosition>();
 
-            for (int y = Cube.CubeSize - 1; y <= Cube.CubeSize * 2 - 1; y++)
+            //Horizontal part
+            for (int y = Cube.CubeSize; y < Cube.CubeSize * 2; y++)
             {
-                for(int x = 0; x < Cube.CubeSize * 4 - 1; x++)
+                for(int x = 0; x < Cube.CubeSize * 4; x++)
                 {
                     positions.Add(new TwoDPosition(x, y));
                 }
             }
 
+            //Vertical part
+            for (int x = Cube.CubeSize; x < Cube.CubeSize * 2; x++)
+            {
+                for(int y = 0; y < Cube.CubeSize; y++)
+                {
+                    positions.Add(new TwoDPosition(x, y));
+                }
 
+                for(int y = Cube.CubeSize * 2 - 1; y < Cube.CubeSize * 3; y++)
+                {
+                    positions.Add(new TwoDPosition(x, y));
+                }
+            }
 
             return positions;
         }

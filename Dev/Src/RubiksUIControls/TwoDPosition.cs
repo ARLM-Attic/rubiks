@@ -24,7 +24,7 @@ namespace RubiksUIControls
             : this()
         {
             X = x;
-            Y = x;
+            Y = y;
         }
     }
 }

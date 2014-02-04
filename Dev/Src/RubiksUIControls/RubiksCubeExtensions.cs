@@ -12,7 +12,7 @@ namespace RubiksUIControls
     {
         public static Color GetColor(this RubiksCube cube, TwoDPosition pos)
         {
-            throw new NotImplementedException();
+            return Colors.Blue;
         }
     }
 }

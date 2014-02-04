@@ -4,6 +4,8 @@
         xmlns:rubiks="clr-namespace:RubiksUIControls;assembly=RubiksUIControls"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible">
         <rubiks:TwoDCube Cube="{Binding RubiksCube}" />
+        </ScrollViewer>
     </Grid>
 </Window>
