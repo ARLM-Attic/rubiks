@@ -158,6 +158,46 @@ namespace RubiksCore
 
         #endregion
 
+        #region Methods\\Shuffle
+
+        public void Shuffle(int numberOfTurns = 100)
+        {
+            Random rnd = new Random();
+
+            for (int i = 0; i < numberOfTurns; i++)
+            {
+                int faceInt = rnd.Next(6);
+                RubiksDirection face = default(RubiksDirection);
+                if (faceInt == 0)
+                    face = RubiksDirection.Back;
+                else if (faceInt == 1)
+                    face = RubiksDirection.Down;
+                else if (faceInt == 2)
+                    face = RubiksDirection.Front;
+                else if (faceInt == 3)
+                    face = RubiksDirection.Left;
+                else if (faceInt == 4)
+                    face = RubiksDirection.Right;
+                else if (faceInt == 5)
+                    face = RubiksDirection.Up;
+
+                int turningDirectionInt = rnd.Next(3);
+                TurningDirection turningDirection = default(TurningDirection);
+                if (turningDirectionInt == 0)
+                    turningDirection = TurningDirection.ThreeoClock;
+                else if (turningDirectionInt == 1)
+                    turningDirection = TurningDirection.SixoClock;
+                else if (turningDirectionInt == 2)
+                    turningDirection = TurningDirection.NineoClock;
+
+                int numberOfLayersDeep = rnd.Next(CubeSize - 1);
+
+                Turn(face, turningDirection, numberOfLayersDeep);
+            }
+        }
+
+        #endregion
+
         #region Constructors
 
         public RubiksCube(INotationParser parser, int cubeSize = 3)
