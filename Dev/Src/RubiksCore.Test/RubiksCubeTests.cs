@@ -2532,26 +2532,50 @@ namespace RubiksCore.Test
         }
 
         [TestMethod]
-        public void MakeRandomTurns_WhenNumberOfRandomTurnsIs100_ThenAllCubiesCoordinatesAreValid()
+        public void Shuffle_WhenNumberOfRandomTurnsIs1000_ThenAllCubiesCoordinatesAreValid()
         {
             //setup
             RubiksCube cube = new RubiksCube(null,new TestConfigurator(), 3);
-            Random faceDeterminator = new Random();
-            Random rotationDeterminator = new Random();
-            Random layerDeterminator = new Random();
-            //exercise
-            for(int i = 0; i < 100; i++)
-            {
-                RubiksDirection face = (RubiksDirection)faceDeterminator.Next(6);
-                TurningDirection direction = (TurningDirection)rotationDeterminator.Next(3);
-                int numberOfLayers = rotationDeterminator.Next(3);
-
-                cube.Turn(face, direction, numberOfLayers);
-            }
+            cube.Shuffle(numberOfTurns:1000);
 
             bool areAllCubiesInRange = cube.Cubies.All(cubie => cubie.Position.X <= 2 && cubie.Position.Y <= 2 && cubie.Position.Z <= 2);
 
+            List<RubiksColor> colorsOfCube = new List<RubiksColor>();
+            foreach(Cubie cubie in cube.Cubies)
+            {
+                if(cubie.BackSide != null)
+                {
+                    colorsOfCube.Add(cubie.BackSide.Value);
+                }
+                if(cubie.FrontSide != null)
+                {
+                    colorsOfCube.Add(cubie.FrontSide.Value);
+                }
+                if(cubie.LeftSide != null)
+                {
+                    colorsOfCube.Add(cubie.LeftSide.Value);
+                }
+                if(cubie.RightSide != null)
+                {
+                    colorsOfCube.Add(cubie.RightSide.Value);
+                }
+                if(cubie.UpSide != null)
+                {
+                    colorsOfCube.Add(cubie.UpSide.Value);
+                }
+                if(cubie.DownSide != null)
+                {
+                    colorsOfCube.Add(cubie.DownSide.Value);
+                }
+            }
+
             Assert.IsTrue(areAllCubiesInRange);
+            Assert.AreEqual<int>(9, colorsOfCube.Count(color => color == RubiksColor.Blue), "Blue colors are incorrect");
+            Assert.AreEqual<int>(9, colorsOfCube.Count(color => color == RubiksColor.Green), "Green colors are incorrect");
+            Assert.AreEqual<int>(9, colorsOfCube.Count(color => color == RubiksColor.Orange), "Orange colors are incorrect");
+            Assert.AreEqual<int>(9, colorsOfCube.Count(color => color == RubiksColor.Red), "Red colors are incorrect");
+            Assert.AreEqual<int>(9, colorsOfCube.Count(color => color == RubiksColor.White), "White colors are incorrect");
+            Assert.AreEqual<int>(9, colorsOfCube.Count(color => color == RubiksColor.Yellow), "Yellow colors are incorrect");
         }
     }
 
