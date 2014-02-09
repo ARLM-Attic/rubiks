@@ -63,6 +63,21 @@ namespace RubiksCore
 
         #endregion
 
+        #region Events
+
+        public event EventHandler<GenericEventArgs<CubeTurnedEvent>> CubeTurned;
+
+        private void OnCubeTurned(RubiksDirection side, TurningDirection direction, int numberOfLayersDeep)
+        {
+            EventHandler<GenericEventArgs<CubeTurnedEvent>> handler = CubeTurned;
+            if(handler != null)
+            {
+                handler(this, new GenericEventArgs<CubeTurnedEvent>(new CubeTurnedEvent(side, direction, numberOfLayersDeep)));
+            }
+        }
+
+        #endregion
+
         #region Methods \\ Basic Moves
 
         public void TurnFront(TurningDirection direction = TurningDirection.ThreeoClock, int layersDeep = 0)
@@ -154,6 +169,8 @@ namespace RubiksCore
                         break;
                 }
             }
+
+            OnCubeTurned(side, direction, numberOfLayersDeep);
         }
 
         #endregion

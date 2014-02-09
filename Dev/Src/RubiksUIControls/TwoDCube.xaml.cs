@@ -34,8 +34,15 @@ namespace RubiksUIControls
 
         private static void RubiksCubeSet(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((TwoDCube)d).InitializeCube((RubiksCube)e.NewValue);
+            RubiksCube newCube = (RubiksCube)e.NewValue;
+            RubiksCube oldCube = (RubiksCube)e.OldValue;
+            TwoDCube twoDCube = (TwoDCube)d;
+
+            twoDCube.ReinitializeCubes(oldCube, newCube);
+            twoDCube.PopulateCube();
         }
+
+        
 
         public RubiksCube Cube
         {
@@ -49,21 +56,36 @@ namespace RubiksUIControls
             }
         }
 
-        private void InitializeCube(RubiksCube cube)
+        private void ReinitializeCubes(RubiksCube oldCube, RubiksCube newCube)
         {
-            for(int row = 0; row < cube.CubeSize * 3; row++)
+            if (oldCube != null)
+            {
+                oldCube.CubeTurned -= cubeTurned;
+            }
+
+            newCube.CubeTurned += cubeTurned;
+        }
+
+        void cubeTurned(object sender, GenericEventArgs<CubeTurnedEvent> e)
+        {
+            PopulateCube();
+        }
+
+        private void PopulateCube()
+        {
+            for(int row = 0; row < Cube.CubeSize * 3; row++)
             {
                 _cubeGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(_gridSquareSize) });
             }
 
-            for(int column = 0; column < cube.CubeSize * 4; column++)
+            for(int column = 0; column < Cube.CubeSize * 4; column++)
             {
                 _cubeGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(_gridSquareSize) });
             }
 
             foreach(TwoDPosition position in CreatePositionsForCube())
             {
-                CreateRect(cube.GetColor(position), position.Y, position.X);
+                CreateRect(Cube.GetColor(position), position.Y, position.X);
             }
         }
 

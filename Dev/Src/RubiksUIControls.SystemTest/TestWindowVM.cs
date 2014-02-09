@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace RubiksUIControls.SystemTest
 {
@@ -16,6 +17,14 @@ namespace RubiksUIControls.SystemTest
             get
             {
                 return _cube;
+            }
+        }
+
+        public ICommand HotKeyCommand
+        {
+            get
+            {
+                return new HotkeyCommand(_cube);
             }
         }
     }
