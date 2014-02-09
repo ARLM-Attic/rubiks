@@ -13,55 +13,81 @@ namespace RubiksUIControls
         private static Dictionary<TwoDPosition, Position> _positionMappings =
             new Dictionary<TwoDPosition, Position>()
             {
+                //Corners
                 {new TwoDPosition(3, 8), new Position(0,0,0)},
                 {new TwoDPosition(0, 5), new Position(0,0,0)},
                 {new TwoDPosition(11, 5), new Position(0,0,0)},
+
                 {new TwoDPosition(8, 5), new Position(2,0,0)},
                 {new TwoDPosition(5, 8), new Position(2,0,0)},
                 {new TwoDPosition(9, 5), new Position(2,0,0)},
+
                 {new TwoDPosition(8, 3), new Position(2,0,2)},
                 {new TwoDPosition(5, 0), new Position(2,0,2)},
                 {new TwoDPosition(9, 3), new Position(2,0,2)},
+
                 {new TwoDPosition(5, 3), new Position(2,2,2)},
                 {new TwoDPosition(6, 3), new Position(2,2,2)},
                 {new TwoDPosition(5, 2), new Position(2,2,2)},
+
                 {new TwoDPosition(3, 3), new Position(0,2,2)},
                 {new TwoDPosition(2, 3), new Position(0,2,2)},
                 {new TwoDPosition(3, 2), new Position(0,2,2)},
+
                 {new TwoDPosition(3, 0), new Position(0,0,2)},
                 {new TwoDPosition(0, 3), new Position(0,0,2)},
                 {new TwoDPosition(11, 3), new Position(0,0,2)},
+
                 {new TwoDPosition(5, 5), new Position(2,2,0)},
                 {new TwoDPosition(5, 6), new Position(2,2,0)},
                 {new TwoDPosition(6, 5), new Position(2,2,0)},
+
                 {new TwoDPosition(3, 5), new Position(0,2,0)},
                 {new TwoDPosition(2, 5), new Position(0,2,0)},
                 {new TwoDPosition(3, 6), new Position(0,2,0)},
 
+
+
+
+
                 {new TwoDPosition(4, 8), new Position(1,0,0)},
                 {new TwoDPosition(10, 5), new Position(1,0,0)},
+
                 {new TwoDPosition(8, 4), new Position(2,0,1)},
                 {new TwoDPosition(9, 4), new Position(2,0,1)},
+
                 {new TwoDPosition(4, 0), new Position(1,0,2)},
                 {new TwoDPosition(10, 3), new Position(1,0,2)},
+
                 {new TwoDPosition(0, 4), new Position(0,0,1)},
                 {new TwoDPosition(11, 4), new Position(0,0,1)},
+
                 {new TwoDPosition(4, 5), new Position(1,2,0)},
                 {new TwoDPosition(4, 6), new Position(1,2,0)},
+
                 {new TwoDPosition(3, 4), new Position(0,2,1)},
                 {new TwoDPosition(2, 4), new Position(0,2,1)},
+
                 {new TwoDPosition(4, 3), new Position(1,2,2)},
                 {new TwoDPosition(4, 2), new Position(1,2,2)},
+
                 {new TwoDPosition(5, 4), new Position(2,2,1)},
                 {new TwoDPosition(6, 4), new Position(2,2,1)},
-                {new TwoDPosition(3, 1), new Position(0,2,2)},
-                {new TwoDPosition(1, 3), new Position(0,2,2)},
+
+                {new TwoDPosition(3, 1), new Position(0,1,2)},
+                {new TwoDPosition(1, 3), new Position(0,1,2)},
+
                 {new TwoDPosition(3, 7), new Position(0,1,0)},
                 {new TwoDPosition(1, 5), new Position(0,1,0)},
+
                 {new TwoDPosition(5, 1), new Position(2,1,2)},
                 {new TwoDPosition(7, 3), new Position(2,1,2)},
+
                 {new TwoDPosition(7, 5), new Position(2,1,0)},
                 {new TwoDPosition(5, 7), new Position(2,1,0)},
+
+
+
 
                 {new TwoDPosition(4, 4), new Position(1,2,1)},
                 {new TwoDPosition(10, 4), new Position(1,0,1)},
