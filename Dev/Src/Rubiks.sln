@@ -19,9 +19,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{62A215A6-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UIControls", "UIControls", "{281823F1-E92A-4BDA-9E32-B9FCB723B70B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksShell", "RubiksShell\RubiksShell.csproj", "{A004C787-6673-4CB1-A03D-0D8354E31175}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 8
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs30
 		SccLocalPath0 = .
@@ -49,6 +51,9 @@ Global
 		SccProjectTopLevelParentUniqueName6 = Rubiks.sln
 		SccProjectName6 = RubiksUIControls.SystemTest
 		SccLocalPath6 = RubiksUIControls.SystemTest
+		SccProjectUniqueName7 = RubiksShell\\RubiksShell.csproj
+		SccProjectName7 = RubiksShell
+		SccLocalPath7 = RubiksShell
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +84,10 @@ Global
 		{08B04F53-A5F1-47EA-B0E2-3F6E4C6A0C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08B04F53-A5F1-47EA-B0E2-3F6E4C6A0C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08B04F53-A5F1-47EA-B0E2-3F6E4C6A0C52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A004C787-6673-4CB1-A03D-0D8354E31175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A004C787-6673-4CB1-A03D-0D8354E31175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A004C787-6673-4CB1-A03D-0D8354E31175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A004C787-6673-4CB1-A03D-0D8354E31175}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,5 +99,8 @@ Global
 		{010EBB4F-98E6-4031-9FF8-2429404EF61F} = {62A215A6-A165-4335-9F48-BA4EF49573F4}
 		{457A4BE9-7662-4571-8E42-D0E20CBC7FED} = {281823F1-E92A-4BDA-9E32-B9FCB723B70B}
 		{08B04F53-A5F1-47EA-B0E2-3F6E4C6A0C52} = {281823F1-E92A-4BDA-9E32-B9FCB723B70B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
 	EndGlobalSection
 EndGlobal
