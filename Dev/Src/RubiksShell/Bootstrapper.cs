@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace RubiksShell
+namespace RubiksApp
 {
     class Bootstrapper : UnityBootstrapper
     {

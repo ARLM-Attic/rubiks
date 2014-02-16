@@ -7,7 +7,7 @@
     <ProjectGuid>{A004C787-6673-4CB1-A03D-0D8354E31175}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RubiksShell</RootNamespace>
+    <RootNamespace>RubiksApp</RootNamespace>
     <AssemblyName>RubiksShell</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
