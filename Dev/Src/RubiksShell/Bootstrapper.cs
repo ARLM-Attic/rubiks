@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Prism.UnityExtensions;
+﻿using Microsoft.Practices.Prism.Modularity;
+using Microsoft.Practices.Prism.UnityExtensions;
 using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,11 @@ namespace RubiksApp
         {
             Application.Current.MainWindow = (Window)Shell;
             Application.Current.MainWindow.Show();
+        }
+
+        protected override Microsoft.Practices.Prism.Modularity.IModuleCatalog CreateModuleCatalog()
+        {
+            return new DirectoryModuleCatalog() { ModulePath= @".\Modules" };
         }
     }
 }
