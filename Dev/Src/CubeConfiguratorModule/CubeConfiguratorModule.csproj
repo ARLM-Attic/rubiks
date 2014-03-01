@@ -66,6 +66,7 @@
       <DependentUpon>CubeConfiguratorControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="CubeConfiguratorModule.cs" />
+    <Compile Include="CubieConfiguratorVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +79,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RubiksCore\RubiksCore.csproj">
+      <Project>{151dc531-e471-4ab7-a1af-a3fbb3f162d5}</Project>
+      <Name>RubiksCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RubiksUIControls\RubiksUIControls.csproj">
       <Project>{457a4be9-7662-4571-8e42-d0e20cbc7fed}</Project>
       <Name>RubiksUIControls</Name>

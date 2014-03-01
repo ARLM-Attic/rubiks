@@ -3,6 +3,7 @@ using Microsoft.Practices.Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,8 @@ namespace CubeConfiguratorModule
 
         public void Initialize()
         {
+            Assembly.LoadFrom(@"Modules\RubiksUIControls.dll");
+
             _viewRegistry.RegisterViewWithRegion("cubeConfigurator", typeof(CubeConfiguratorControl));
         }
     }

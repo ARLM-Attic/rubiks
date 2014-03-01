@@ -6,5 +6,5 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              xmlns:RubiksControls="clr-namespace:RubiksUIControls;assembly=RubiksUIControls">
-    <RubiksControls:TwoDCube/>
+    <RubiksControls:TwoDCube Cube="{Binding Cube}"/>
 </UserControl>

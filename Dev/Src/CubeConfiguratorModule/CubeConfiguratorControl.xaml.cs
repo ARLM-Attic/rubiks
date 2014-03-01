@@ -23,6 +23,7 @@ namespace CubeConfiguratorModule
         public CubeConfiguratorControl()
         {
             InitializeComponent();
+            DataContext = new CubieConfiguratorVM();
         }
     }
 }
