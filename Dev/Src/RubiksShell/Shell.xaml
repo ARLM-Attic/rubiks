@@ -5,5 +5,6 @@
         xmlns:Prism="http://www.codeplex.com/prism">
     <TabControl>
         <TabItem Header="Cube Configurator" Prism:RegionManager.RegionName="cubeConfigurator"/>
+        <TabItem Header="Solver" Prism:RegionManager.RegionName="solver"/>
     </TabControl>
 </Window>
