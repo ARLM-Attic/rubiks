@@ -6,5 +6,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              xmlns:RubiksControls="clr-namespace:RubiksUIControls;assembly=RubiksUIControls">
-    <RubiksControls:TwoDCube Cube="{Binding Cube}"/>
+    <DockPanel LastChildFill="True">
+        
+        <Grid DockPanel.Dock="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Button Content="Front" Command="{Binding CubeManipulationCommand}" CommandParameter="front" Grid.Column="1" Grid.Row="1"/>
+            <Button Content="Back" Command="{Binding CubeManipulationCommand}" CommandParameter="back" Grid.Column="3" Grid.Row="1"/>
+            <Button Content="Up" Command="{Binding CubeManipulationCommand}" CommandParameter="up" Grid.Column="1" Grid.Row="0"/>
+            <Button Content="Down" Command="{Binding CubeManipulationCommand}" CommandParameter="down" Grid.Column="1" Grid.Row="2"/>
+            <Button Content="Right" Command="{Binding CubeManipulationCommand}" CommandParameter="right" Grid.Column="2" Grid.Row="1"/>
+            <Button Content="Left" Command="{Binding CubeManipulationCommand}" CommandParameter="left" Grid.Column="0" Grid.Row="1"/>
+        </Grid>
+        <RubiksControls:TwoDCube Cube="{Binding Cube}"/>
+    </DockPanel>
 </UserControl>
