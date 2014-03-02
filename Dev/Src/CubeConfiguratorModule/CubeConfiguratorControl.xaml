@@ -8,12 +8,13 @@
              xmlns:RubiksControls="clr-namespace:RubiksUIControls;assembly=RubiksUIControls">
     <DockPanel LastChildFill="True">
         
-        <Grid DockPanel.Dock="Right">
+        <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="120"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -26,7 +27,9 @@
             <Button Content="Down" Command="{Binding CubeManipulationCommand}" CommandParameter="down" Grid.Column="1" Grid.Row="2"/>
             <Button Content="Right" Command="{Binding CubeManipulationCommand}" CommandParameter="right" Grid.Column="2" Grid.Row="1"/>
             <Button Content="Left" Command="{Binding CubeManipulationCommand}" CommandParameter="left" Grid.Column="0" Grid.Row="1"/>
+            <Button Content="Shuffle" Command="{Binding CubeManipulationCommand}" CommandParameter="shuffle" Grid.Column="4" Grid.Row="1" Width="100" HorizontalAlignment="Center"/>
         </Grid>
         <RubiksControls:TwoDCube Cube="{Binding Cube}"/>
+        
     </DockPanel>
 </UserControl>

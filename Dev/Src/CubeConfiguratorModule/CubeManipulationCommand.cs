@@ -50,6 +50,10 @@ namespace CubeConfiguratorModule
             {
                 _cube.TurnBack();
             }
+            else if(direction == "shuffle")
+            {
+                _cube.Shuffle();
+            }
         }
     }
 }
