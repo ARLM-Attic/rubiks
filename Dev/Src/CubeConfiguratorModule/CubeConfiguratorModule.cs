@@ -21,8 +21,9 @@ namespace CubeConfiguratorModule
         public void Initialize()
         {
             Assembly.LoadFrom(@"Modules\RubiksUIControls.dll");
-
-            _viewRegistry.RegisterViewWithRegion("cubeConfigurator", typeof(CubeConfiguratorControl));
+            CubieConfiguratorVM configuratorVm = new CubieConfiguratorVM(new CubeConfigurationService());
+            CubeConfiguratorControl configuratorView = new CubeConfiguratorControl() { DataContext = configuratorVm };
+            _viewRegistry.RegisterViewWithRegion("cubeConfigurator", new Func<object>(() => configuratorView));
         }
     }
 }

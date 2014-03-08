@@ -62,12 +62,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CubeConfigurationService.cs" />
     <Compile Include="CubeConfiguratorControl.xaml.cs">
       <DependentUpon>CubeConfiguratorControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="CubeConfiguratorModule.cs" />
     <Compile Include="CubieConfiguratorVM.cs" />
     <Compile Include="CubeManipulationCommand.cs" />
+    <Compile Include="ICubeConfigurationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

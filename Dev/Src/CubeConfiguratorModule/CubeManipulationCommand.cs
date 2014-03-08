@@ -10,15 +10,15 @@ namespace CubeConfiguratorModule
 {
     public class CubeManipulationCommand : ICommand
     {
-        private RubiksCube _cube;
-        public CubeManipulationCommand(RubiksCube cube)
+        ICubeConfigurationService _cubeConfigService;
+        public CubeManipulationCommand(ICubeConfigurationService cubeConfigService)
         {
-            _cube = cube;
+            _cubeConfigService = cubeConfigService;
         }
 
         public bool CanExecute(object parameter)
         {
-            return _cube != null;
+            return _cubeConfigService != null;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -26,33 +26,36 @@ namespace CubeConfiguratorModule
         public void Execute(object parameter)
         {
             string direction = (string)parameter;
+
+            RubiksCube currentCube = _cubeConfigService.GetCube();
+
             if (direction == "left")
             {
-                _cube.TurnLeft();
+                currentCube.TurnLeft();
             }
             else if (direction == "right")
             {
-                _cube.TurnRight();
+                currentCube.TurnRight();
             }
             else if (direction == "up")
             {
-                _cube.TurnUp();
+                currentCube.TurnUp();
             }
             else if (direction == "down")
             {
-                _cube.TurnDown();
+                currentCube.TurnDown();
             }
             else if (direction == "front")
             {
-                _cube.TurnFront();
+                currentCube.TurnFront();
             }
             else if (direction == "back")
             {
-                _cube.TurnBack();
+                currentCube.TurnBack();
             }
             else if(direction == "shuffle")
             {
-                _cube.Shuffle();
+                currentCube.Shuffle();
             }
         }
     }
