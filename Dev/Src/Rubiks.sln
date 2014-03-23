@@ -27,9 +27,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeConfiguratorModule", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeSolverModule", "CubeSolverModule\CubeSolverModule.csproj", "{5EA72448-52D7-48D9-AFF7-438B75BE5B09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksAlgorithmToolset", "RubiksAlgorithmToolset\RubiksAlgorithmToolset.csproj", "{1DC2507D-13C7-4FE6-8102-716438487F0C}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
+		SccNumberOfProjects = 11
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs30
 		SccLocalPath0 = .
@@ -68,6 +70,10 @@ Global
 		SccProjectTopLevelParentUniqueName9 = Rubiks.sln
 		SccProjectName9 = CubeSolverModule
 		SccLocalPath9 = CubeSolverModule
+		SccProjectUniqueName10 = RubiksAlgorithmToolset\\RubiksAlgorithmToolset.csproj
+		SccProjectTopLevelParentUniqueName10 = Rubiks.sln
+		SccProjectName10 = RubiksAlgorithmToolset
+		SccLocalPath10 = RubiksAlgorithmToolset
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +116,10 @@ Global
 		{5EA72448-52D7-48D9-AFF7-438B75BE5B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EA72448-52D7-48D9-AFF7-438B75BE5B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EA72448-52D7-48D9-AFF7-438B75BE5B09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DC2507D-13C7-4FE6-8102-716438487F0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC2507D-13C7-4FE6-8102-716438487F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC2507D-13C7-4FE6-8102-716438487F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC2507D-13C7-4FE6-8102-716438487F0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +129,7 @@ Global
 		{010EBB4F-98E6-4031-9FF8-2429404EF61F} = {62A215A6-A165-4335-9F48-BA4EF49573F4}
 		{9F42F5F2-67B8-4BE9-9331-4714D7235BD1} = {62A215A6-A165-4335-9F48-BA4EF49573F4}
 		{914ED0CD-E1A1-4ABC-A2C1-41B0A5363871} = {62A215A6-A165-4335-9F48-BA4EF49573F4}
+		{1DC2507D-13C7-4FE6-8102-716438487F0C} = {62A215A6-A165-4335-9F48-BA4EF49573F4}
 		{08B04F53-A5F1-47EA-B0E2-3F6E4C6A0C52} = {281823F1-E92A-4BDA-9E32-B9FCB723B70B}
 		{457A4BE9-7662-4571-8E42-D0E20CBC7FED} = {281823F1-E92A-4BDA-9E32-B9FCB723B70B}
 		{65A4DDF4-3186-4A5F-995D-10B556A50D44} = {1944DD5A-0FEE-4E50-80D4-59D4A646C711}
