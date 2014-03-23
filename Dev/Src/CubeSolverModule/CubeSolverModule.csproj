@@ -61,11 +61,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfiguratorModuleCubeProvider.cs" />
+    <Compile Include="CubeRunner.cs" />
+    <Compile Include="CubeRunnerFactory.cs" />
     <Compile Include="CubeSolverModule.cs" />
+    <Compile Include="Enumerations.cs" />
+    <Compile Include="ICubeProvider.cs" />
+    <Compile Include="ICubeRunnerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CubeConfiguratorModule\CubeConfiguratorModule.csproj">
+      <Project>{65a4ddf4-3186-4a5f-995d-10b556a50d44}</Project>
+      <Name>CubeConfiguratorModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RubiksAlgorithmToolset\RubiksAlgorithmToolset.csproj">
+      <Project>{1dc2507d-13c7-4fe6-8102-716438487f0c}</Project>
+      <Name>RubiksAlgorithmToolset</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RubiksCore\RubiksCore.csproj">
+      <Project>{151dc531-e471-4ab7-a1af-a3fbb3f162d5}</Project>
+      <Name>RubiksCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
