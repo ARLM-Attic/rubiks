@@ -29,9 +29,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeSolverModule", "CubeSol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubiksAlgorithmToolset", "RubiksAlgorithmToolset\RubiksAlgorithmToolset.csproj", "{1DC2507D-13C7-4FE6-8102-716438487F0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeSolverModule.Test", "CubeSolverModule.Test\CubeSolverModule.Test.csproj", "{C2E00601-F1CD-44DC-A12C-B55793E87BB9}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 11
+		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs30
 		SccLocalPath0 = .
@@ -74,6 +76,10 @@ Global
 		SccProjectTopLevelParentUniqueName10 = Rubiks.sln
 		SccProjectName10 = RubiksAlgorithmToolset
 		SccLocalPath10 = RubiksAlgorithmToolset
+		SccProjectUniqueName11 = CubeSolverModule.Test\\CubeSolverModule.Test.csproj
+		SccProjectTopLevelParentUniqueName11 = Rubiks.sln
+		SccProjectName11 = CubeSolverModule.Test
+		SccLocalPath11 = CubeSolverModule.Test
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -120,6 +126,10 @@ Global
 		{1DC2507D-13C7-4FE6-8102-716438487F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DC2507D-13C7-4FE6-8102-716438487F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DC2507D-13C7-4FE6-8102-716438487F0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2E00601-F1CD-44DC-A12C-B55793E87BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2E00601-F1CD-44DC-A12C-B55793E87BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2E00601-F1CD-44DC-A12C-B55793E87BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2E00601-F1CD-44DC-A12C-B55793E87BB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,6 +144,7 @@ Global
 		{457A4BE9-7662-4571-8E42-D0E20CBC7FED} = {281823F1-E92A-4BDA-9E32-B9FCB723B70B}
 		{65A4DDF4-3186-4A5F-995D-10B556A50D44} = {1944DD5A-0FEE-4E50-80D4-59D4A646C711}
 		{5EA72448-52D7-48D9-AFF7-438B75BE5B09} = {1944DD5A-0FEE-4E50-80D4-59D4A646C711}
+		{C2E00601-F1CD-44DC-A12C-B55793E87BB9} = {1944DD5A-0FEE-4E50-80D4-59D4A646C711}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
