@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace CubeConfiguratorModule
 {
+    [Module(ModuleName="CubeConfiguratorModule")]
     public class CubeConfiguratorModule : IModule
     {
         readonly IRegionViewRegistry _viewRegistry;
