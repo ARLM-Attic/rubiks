@@ -1,5 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RubiksCore;
+using RubiksCore.RubiksAlgorithmToolset;
+using Moq;
 
 namespace CubeSolverModule.Test
 {
@@ -9,7 +12,12 @@ namespace CubeSolverModule.Test
         [TestMethod]
         public void Construct_ThenRunnerStateIsStopped()
         {
-            Assert.Inconclusive();
+            RubiksCube cube = new RubiksCube(null);
+            Mock<ICubeSolvingAlgorithm> algMock = new Mock<ICubeSolvingAlgorithm>();
+
+            CubeRunner cubeRunner = new CubeRunner(cube, algMock.Object);
+
+            Assert.AreEqual(cubeRunner.RunnerState, CubeRunnerState.Stopped);
         }
 
         [TestMethod]

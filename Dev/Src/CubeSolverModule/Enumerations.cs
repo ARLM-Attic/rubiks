@@ -10,6 +10,6 @@ namespace CubeSolverModule
     {
         Running,
         Stopped,
-
+        Error
     }
 }

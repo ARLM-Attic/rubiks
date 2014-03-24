@@ -13,7 +13,9 @@ namespace CubeSolverModule
     {
         #region Instance Variables
 
-        CubeRunnerState _state; 
+        CubeRunnerState _state;
+        RubiksCube _cube;
+        ICubeSolvingAlgorithm _alg;
 
         #endregion
 
@@ -21,7 +23,10 @@ namespace CubeSolverModule
 
         internal CubeRunner(RubiksCube cube, ICubeSolvingAlgorithm algorithm)
         {
-            throw new NotImplementedException();
+            _cube = cube;
+            _alg = algorithm;
+
+            _state = CubeRunnerState.Stopped;
         } 
 
         #endregion

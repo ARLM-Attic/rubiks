@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -62,6 +65,17 @@
       <Project>{5ea72448-52d7-48d9-aff7-438b75be5b09}</Project>
       <Name>CubeSolverModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RubiksAlgorithmToolset\RubiksAlgorithmToolset.csproj">
+      <Project>{1dc2507d-13c7-4fe6-8102-716438487f0c}</Project>
+      <Name>RubiksAlgorithmToolset</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RubiksCore\RubiksCore.csproj">
+      <Project>{151dc531-e471-4ab7-a1af-a3fbb3f162d5}</Project>
+      <Name>RubiksCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
