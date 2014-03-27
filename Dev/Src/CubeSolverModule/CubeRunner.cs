@@ -64,12 +64,38 @@ namespace CubeSolverModule
         {
             RunnerState = CubeRunnerState.Running;
 
-            SolverResult result = new SolverResult();
+            _alg.Solve(_cube);
+            SolverResult result = new SolverResult() 
+            {
+                WasCubeSolved = IsCubeSolved(_cube)
+            };
 
             RunnerState = CubeRunnerState.Stopped;
 
             return result;
         } 
+
+        private bool IsCubeSolved(RubiksCube cube)
+        {
+            int cubeSize = cube.CubeSize;
+            RubiksCube solvedCube = new RubiksCube(cubeSize);
+            for(int x = 0; x < cubeSize; x++)
+            {
+                for(int y = 0; y < cubeSize; y++)
+                {
+                    for(int z = 0; z < cubeSize; z++)
+                    {
+                        Cubie actualCubie = cube[x, y, z];
+                        Cubie expectedCubie = solvedCube[x, y, z];
+                        if(!actualCubie.Equals(expectedCubie))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
 
         #endregion
 

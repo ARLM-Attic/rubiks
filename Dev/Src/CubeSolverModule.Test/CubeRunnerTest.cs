@@ -48,13 +48,28 @@ namespace CubeSolverModule.Test
         }
 
         [TestMethod]
-        public void Run_WhenAlgorithmSolvesCube_ThenRunReturnsTrue()
+        public void Run_WhenAlgorithmSolvesCube_ThenResultShowThatTheCubeWasSolved()
         {
-            Assert.Inconclusive();
+            RubiksCube cube = new RubiksCube();
+            cube.TurnLeft();
+            cube.TurnUp();
+            Mock<ICubeSolvingAlgorithm> algMock = new Mock<ICubeSolvingAlgorithm>();
+            algMock.Setup(alg => alg.Solve(cube)).Callback(new Action(() =>
+            {
+                cube.TurnUp(TurningDirection.NineoClock);
+                cube.TurnLeft(TurningDirection.NineoClock);
+            }));
+
+            CubeRunner runner = new CubeRunner(cube, algMock.Object);
+
+            SolverResult result = runner.Run();
+
+            Assert.IsTrue(result.WasCubeSolved);
+            
         }
 
         [TestMethod]
-        public void Run_WhenAlgorithmFailsToSolveCube_ThenRunReturnsFalse()
+        public void Run_WhenAlgorithmFailsToSolveCube_ThenResultShowThatTheCubeWasSolved()
         {
             Assert.Inconclusive();
         }
