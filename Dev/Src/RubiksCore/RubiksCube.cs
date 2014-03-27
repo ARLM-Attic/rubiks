@@ -217,6 +217,12 @@ namespace RubiksCore
 
         #region Constructors
 
+        public RubiksCube(int cubeSize = 3)
+            : this(null, cubeSize)
+        {
+
+        }
+
         public RubiksCube(INotationParser parser, int cubeSize = 3)
             : this(parser, new SolvedPuzzleCubieConfigurator(), cubeSize)
         {

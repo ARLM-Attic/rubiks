@@ -59,10 +59,16 @@ namespace CubeSolverModule
         /// <summary>
         /// Runs the algorithm.
         /// </summary>
-        /// <returns>True if the cube is solved and false if it is not</returns>
-        public bool Run()
+        /// <returns>The results of the run</returns>
+        public SolverResult Run()
         {
-            throw new NotImplementedException();
+            RunnerState = CubeRunnerState.Running;
+
+            SolverResult result = new SolverResult();
+
+            RunnerState = CubeRunnerState.Stopped;
+
+            return result;
         } 
 
         #endregion

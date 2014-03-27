@@ -69,6 +69,7 @@
     <Compile Include="ICubeProvider.cs" />
     <Compile Include="ICubeRunnerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolverResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

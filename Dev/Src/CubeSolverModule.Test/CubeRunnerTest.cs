@@ -12,7 +12,7 @@ namespace CubeSolverModule.Test
         [TestMethod]
         public void Construct_ThenRunnerStateIsStopped()
         {
-            RubiksCube cube = new RubiksCube(null);
+            RubiksCube cube = new RubiksCube();
             Mock<ICubeSolvingAlgorithm> algMock = new Mock<ICubeSolvingAlgorithm>();
 
             CubeRunner cubeRunner = new CubeRunner(cube, algMock.Object);
@@ -23,13 +23,28 @@ namespace CubeSolverModule.Test
         [TestMethod]
         public void Run_WhenAlgorithmRunsToCompletion_ThenCubeStateGoesToRunningAndThenStopped()
         {
-            Assert.Inconclusive();
-        }
+            RubiksCube cube = new RubiksCube();
+            Mock<ICubeSolvingAlgorithm> algMock = new Mock<ICubeSolvingAlgorithm>();
 
-        [TestMethod]
-        public void Run_WhenAlgorithmThrowsException_ThenCubeStateGoesToRunningAndThenErrorStateAndRunReturnsFalse()
-        {
-            Assert.Inconclusive();
+            CubeRunner cubeRunner = new CubeRunner(cube, algMock.Object);
+
+            bool wentToRunning = false;
+            bool wentToStopped = false;
+            cubeRunner.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler((sender, args) => 
+            {
+                if(cubeRunner.RunnerState == CubeRunnerState.Running)
+                {
+                    wentToRunning = true;
+                }
+                if(cubeRunner.RunnerState == CubeRunnerState.Stopped)
+                {
+                    wentToStopped = true;
+                }
+            });
+
+            cubeRunner.Run();
+
+            Assert.IsTrue(wentToRunning && wentToStopped);
         }
 
         [TestMethod]

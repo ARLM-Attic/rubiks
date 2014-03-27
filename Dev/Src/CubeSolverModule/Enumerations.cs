@@ -9,7 +9,6 @@ namespace CubeSolverModule
     public enum CubeRunnerState
     {
         Running,
-        Stopped,
-        Error
+        Stopped
     }
 }
