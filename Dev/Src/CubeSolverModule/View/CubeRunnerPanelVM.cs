@@ -32,6 +32,7 @@ namespace CubeSolverModule.View
         {
             RunnerBars = new ObservableCollection<RunnerBarVM>();
             BrowseCommand = new BrowseCommand(cubeRunnerCreator, this);
+            ClearCommand = new ClearCommand(this);
         }
     }
 }

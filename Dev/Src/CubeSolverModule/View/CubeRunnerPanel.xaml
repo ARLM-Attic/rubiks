@@ -22,7 +22,7 @@
             <RowDefinition Height=".85*"/>
         </Grid.RowDefinitions>
         <Button x:Name="btnBrowse" Grid.Row="0" Grid.Column="0" Command="{Binding BrowseCommand}">Browse</Button>
-        <Button x:Name="btnClear" Grid.Row="0" Grid.Column="1">Clear</Button>
+        <Button x:Name="btnClear" Grid.Row="0" Grid.Column="1" Command="{Binding ClearCommand}">Clear</Button>
         <ItemsControl Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding RunnerBars}" ItemTemplate="{StaticResource runnerBar}">
         </ItemsControl>
     </Grid>
