@@ -30,6 +30,7 @@ namespace CubeSolverModule.View
 
         public CubeRunnerPanelVM(ICubeRunnerFactory cubeRunnerCreator)
         {
+            RunnerBars = new ObservableCollection<RunnerBarVM>();
             BrowseCommand = new BrowseCommand(cubeRunnerCreator, this);
         }
     }

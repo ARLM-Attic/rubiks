@@ -24,7 +24,7 @@ namespace CubeSolverModule
 
         public IEnumerable<CubeRunner> CreateCubeRunners(Assembly assembly)
         {
-            IEnumerable<Type> types = assembly.ExportedTypes.Where(type => type.IsSubclassOf(typeof(ICubeSolvingAlgorithm)));
+            IEnumerable<Type> types = assembly.ExportedTypes.Where(type => type.GetInterfaces().Any(typ => typ.Equals((typeof(ICubeSolvingAlgorithm)))));
 
             IEnumerable<ICubeSolvingAlgorithm> algorithms = types.Select(type => (ICubeSolvingAlgorithm)Activator.CreateInstance(type)).ToArray();
 

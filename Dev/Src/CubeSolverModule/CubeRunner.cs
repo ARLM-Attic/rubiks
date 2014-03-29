@@ -52,7 +52,31 @@ namespace CubeSolverModule
                     OnPropertyChanged("RunnerState");
                 }
             }
-        } 
+        }
+ 
+        public string AlgorithmName
+        {
+            get
+            {
+                return _alg.AlgorithmName;
+            }
+        }
+
+        public string AlgorithmDescription
+        {
+            get
+            {
+                return _alg.Description;
+            }
+        }
+
+        public string AlgorithmAuthor
+        {
+            get
+            {
+                return _alg.Author;
+            }
+        }
 
         #endregion
 
