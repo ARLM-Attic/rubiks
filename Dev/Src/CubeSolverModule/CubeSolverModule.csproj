@@ -74,12 +74,14 @@
     <Compile Include="ICubeRunnerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolverResult.cs" />
+    <Compile Include="View\AddSubtractConverter.cs" />
     <Compile Include="View\BrowseCommand.cs" />
     <Compile Include="View\ClearCommand.cs" />
     <Compile Include="View\CubeRunnerPanel.xaml.cs">
       <DependentUpon>CubeRunnerPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CubeRunnerPanelVM.cs" />
+    <Compile Include="View\RunCommand.cs" />
     <Compile Include="View\RunnerBarVM.cs" />
   </ItemGroup>
   <ItemGroup>

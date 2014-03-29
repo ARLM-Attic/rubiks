@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CubeSolverModule.View
 {
@@ -36,6 +37,12 @@ namespace CubeSolverModule.View
             }
         }
 
+        public ICommand RunCommand
+        {
+            get;
+            private set;
+        }
+
         #endregion
 
         #region Constructors
@@ -43,6 +50,7 @@ namespace CubeSolverModule.View
         public RunnerBarVM(CubeRunner runner)
         {
             Runner = runner;
+            RunCommand = new RunCommand(runner, this);
         }
 
         #endregion

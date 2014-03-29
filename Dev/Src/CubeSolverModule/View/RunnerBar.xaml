@@ -3,9 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:CubeSolverModule.View"
              >
+    <local:AddSubtractConverter x:Key="addSubtractConverter" />
     <DataTemplate x:Key="runnerBar">
-        <TextBlock Text="{Binding Runner.AlgorithmName}"></TextBlock>
+        <Expander>
+            <Expander.Header>
+                <HeaderedContentControl Width="{Binding
+                                        RelativeSource={RelativeSource
+                                        Mode=FindAncestor,
+                                        AncestorType={x:Type Expander}},
+                                        Path=ActualWidth, 
+                                        Converter={StaticResource addSubtractConverter}, 
+                                        ConverterParameter=-28}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".2*"/>
+                            <RowDefinition Height=".2*"/>
+                            <RowDefinition Height=".6*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".1*"/>
+                            <ColumnDefinition Width=".5*"/>
+                            <ColumnDefinition Width=".4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Path Width="37.9998" Height="31.6665" Grid.Column="0" Grid.RowSpan="3" Stretch="Fill" Fill="#76EE00" 
+                              Data="F1 M 23.7501,33.25L 34.8334,44.3333L 52.2499,22.1668L 56.9999,26.9168L 34.8334,53.8333L 19.0001,38L 23.7501,33.25 Z "/>
+                        <TextBlock Text="{Binding Runner.AlgorithmName}" Grid.Column="1" Grid.Row="0"/>
+                        <TextBlock Text="{Binding Runner.AlgorithmAuthor}" Grid.Column="1" Grid.Row="1"/>
+                        <TextBlock Text="{Binding Runner.AlgorithmDescription}" Grid.Column="1" Grid.Row="2"/>
+                        <Button Content="Run" Command="{Binding RunCommand}" Grid.Column="2" Grid.RowSpan="3"/>
+                    </Grid>
+                </HeaderedContentControl>
+            </Expander.Header>
+        </Expander>
     </DataTemplate>
 </ResourceDictionary>
