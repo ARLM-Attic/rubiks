@@ -3,6 +3,7 @@ using RubiksCore.RubiksAlgorithmToolset;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace CubeSolverModule
         CubeRunnerState _state;
         RubiksCube _cube;
         ICubeSolvingAlgorithm _alg;
+        int _numberOfTurns;
 
         #endregion
 
@@ -64,11 +66,35 @@ namespace CubeSolverModule
         {
             RunnerState = CubeRunnerState.Running;
 
-            _alg.Solve(_cube);
+            _cube.CubeTurned += _cube_CubeTurned;
+            _numberOfTurns = 0;
+
+            bool wasError = false;
+            string errorMessage = null;
+
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            try
+            {
+                _alg.Solve(_cube);
+            }
+            catch(Exception ex)
+            {
+                wasError = true;
+                errorMessage = ex.Message;
+            }
+            timer.Stop();
+
             SolverResult result = new SolverResult() 
             {
-                WasCubeSolved = IsCubeSolved(_cube)
+                WasCubeSolved = IsCubeSolved(_cube),
+                WasThereAnError = wasError,
+                ErrorMessage = errorMessage,
+                TimeToCompletion = timer.Elapsed,
+                MovesToCompletion = _numberOfTurns
             };
+
+            _cube.CubeTurned -= _cube_CubeTurned;
 
             RunnerState = CubeRunnerState.Stopped;
 
@@ -95,6 +121,11 @@ namespace CubeSolverModule
                 }
             }
             return true;
+        }
+
+        void _cube_CubeTurned(object sender, GenericEventArgs<CubeTurnedEvent> e)
+        {
+            _numberOfTurns++;
         }
 
         #endregion

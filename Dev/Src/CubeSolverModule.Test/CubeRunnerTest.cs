@@ -65,13 +65,122 @@ namespace CubeSolverModule.Test
             SolverResult result = runner.Run();
 
             Assert.IsTrue(result.WasCubeSolved);
-            
         }
 
         [TestMethod]
         public void Run_WhenAlgorithmFailsToSolveCube_ThenResultShowThatTheCubeWasSolved()
         {
-            Assert.Inconclusive();
+            RubiksCube cube = new RubiksCube();
+            cube.TurnLeft();
+            cube.TurnUp();
+            Mock<ICubeSolvingAlgorithm> algMock = new Mock<ICubeSolvingAlgorithm>();
+            algMock.Setup(alg => alg.Solve(cube)).Callback(new Action(() =>
+            {
+                cube.TurnUp(TurningDirection.NineoClock);
+            }));
+
+            CubeRunner runner = new CubeRunner(cube, algMock.Object);
+
+            SolverResult result = runner.Run();
+
+            Assert.IsFalse(result.WasCubeSolved);
+        }
+
+        [TestMethod]
+        public void Run_WhenNoExceptionThrown_ThenTheErrorStringIsNullAndWasThereAnErrorIsFalse()
+        {
+            RubiksCube cube = new RubiksCube();
+            Mock<ICubeSolvingAlgorithm> algMock = new Mock<ICubeSolvingAlgorithm>();
+            algMock.Setup(alg => alg.Solve(cube)).Callback(new Action(() =>
+            {
+                cube.TurnUp(TurningDirection.NineoClock);
+            }));
+
+            CubeRunner runner = new CubeRunner(cube, algMock.Object);
+
+            SolverResult result = runner.Run();
+
+            Assert.IsFalse(result.WasThereAnError);
+            Assert.IsNull(result.ErrorMessage);
+        }
+
+        [TestMethod]
+        public void Run_WhenExceptionThrown_ThenTheErrorStringIsNotNullAndWasThereAnErrorIsTrue()
+        {
+            RubiksCube cube = new RubiksCube();
+            Mock<ICubeSolvingAlgorithm> algMock = new Mock<ICubeSolvingAlgorithm>();
+            algMock.Setup(alg => alg.Solve(cube)).Callback(new Action(() =>
+            {
+                cube.TurnUp(TurningDirection.NineoClock);
+                throw new Exception();
+            }));
+
+            CubeRunner runner = new CubeRunner(cube, algMock.Object);
+
+            SolverResult result = runner.Run();
+
+            Assert.IsTrue(result.WasThereAnError);
+            Assert.IsNotNull(result.ErrorMessage);
+        }
+
+        [TestMethod]
+        public void Run_WhenAlgorithmRunsForOneSecond_ThenTimeToCompletionIsOneSecondPlusOrMinusPointTwoSeconds()
+        {
+            RubiksCube cube = new RubiksCube();
+            Mock<ICubeSolvingAlgorithm> algMock = new Mock<ICubeSolvingAlgorithm>();
+            algMock.Setup(alg => alg.Solve(cube)).Callback(new Action(() =>
+            {
+                System.Threading.Thread.Sleep(1000);
+            }));
+
+            CubeRunner runner = new CubeRunner(cube, algMock.Object);
+
+            SolverResult result = runner.Run();
+
+            Assert.IsTrue(TimeSpan.FromSeconds(1) + TimeSpan.FromSeconds(.2) > result.TimeToCompletion 
+                || TimeSpan.FromSeconds(1) - TimeSpan.FromSeconds(.2) < result.TimeToCompletion, string.Format("Actual time to completion {0}", result.TimeToCompletion));
+        }
+
+        [TestMethod]
+        public void Run_WhenAlgorithmTurnsCubeTwice_ThenMovesToCompletionIsTwo()
+        {
+            RubiksCube cube = new RubiksCube();
+            Mock<ICubeSolvingAlgorithm> algMock = new Mock<ICubeSolvingAlgorithm>();
+            algMock.Setup(alg => alg.Solve(cube)).Callback(new Action(() =>
+            {
+                cube.TurnUp(TurningDirection.NineoClock);
+                cube.TurnLeft(TurningDirection.NineoClock);
+            }));
+
+            CubeRunner runner = new CubeRunner(cube, algMock.Object);
+
+            SolverResult result = runner.Run();
+
+            Assert.AreEqual<int>(2, result.MovesToCompletion);
+        }
+
+        [TestMethod]
+        public void Run_WhenAlgorithmOnSecondRunTurnsCubeThreeTimes_ThenMovesToCompletionIsThree()
+        {
+            RubiksCube cube = new RubiksCube();
+            Mock<ICubeSolvingAlgorithm> algMock = new Mock<ICubeSolvingAlgorithm>();
+            algMock.Setup(alg => alg.Solve(cube)).Callback(new Action(() =>
+            {
+                cube.TurnUp(TurningDirection.NineoClock);
+                cube.TurnLeft(TurningDirection.NineoClock);
+            }));
+            algMock.Setup(alg => alg.Solve(cube)).Callback(new Action(() =>
+            {
+                cube.TurnUp(TurningDirection.NineoClock);
+                cube.TurnLeft(TurningDirection.NineoClock);
+                cube.TurnBack();
+            }));
+
+            CubeRunner runner = new CubeRunner(cube, algMock.Object);
+
+            SolverResult result = runner.Run();
+
+            Assert.AreEqual<int>(3, result.MovesToCompletion);
         }
     }
 }
