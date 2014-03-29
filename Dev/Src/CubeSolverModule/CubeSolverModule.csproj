@@ -74,9 +74,12 @@
     <Compile Include="ICubeRunnerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolverResult.cs" />
-    <Compile Include="View\CubeRunnerView.xaml.cs">
-      <DependentUpon>CubeRunnerView.xaml</DependentUpon>
+    <Compile Include="View\BrowseCommand.cs" />
+    <Compile Include="View\CubeRunnerPanel.xaml.cs">
+      <DependentUpon>CubeRunnerPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CubeRunnerPanelVM.cs" />
+    <Compile Include="View\RunnerBarVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -97,7 +100,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="View\CubeRunnerView.xaml">
+    <Page Include="View\CubeRunnerPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

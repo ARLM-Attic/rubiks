@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+
+namespace CubeSolverModule.View
+{
+    public class CubeRunnerPanelVM
+    {
+        public ObservableCollection<RunnerBarVM> RunnerBars 
+        { 
+            get; 
+            private set; 
+        }
+
+        public ICommand BrowseCommand 
+        { 
+            get; 
+            private set; 
+        }
+
+        public ICommand ClearCommand
+        {
+            get;
+            private set;
+        }
+
+        public CubeRunnerPanelVM(ICubeRunnerFactory cubeRunnerCreator)
+        {
+            BrowseCommand = new BrowseCommand(cubeRunnerCreator, this);
+        }
+    }
+}

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CubeSolverModule.View
 {
     /// <summary>
-    /// Interaction logic for CubeRunnerView.xaml
+    /// Interaction logic for CubeRunnerPanel.xaml
     /// </summary>
-    public partial class CubeRunnerView : UserControl
+    public partial class CubeRunnerPanel : UserControl
     {
-        public CubeRunnerView()
+        public CubeRunnerPanel()
         {
             InitializeComponent();
         }

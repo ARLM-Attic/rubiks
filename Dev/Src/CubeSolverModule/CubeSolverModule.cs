@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CubeSolverModule.View;
+using CubeConfiguratorModule;
 
 namespace CubeSolverModule
 {
@@ -14,14 +15,17 @@ namespace CubeSolverModule
     public class CubeSolverModule : IModule
     {
         IRegionViewRegistry _viewRegistry;
+        ICubeProvider _cubeProvider;
 
-        public CubeSolverModule(IRegionViewRegistry viewRegistry)
+        public CubeSolverModule(IRegionViewRegistry viewRegistry, ICubeConfigurationService cubeConfigurationService)
         {
             _viewRegistry = viewRegistry;
+            _cubeProvider = new ConfiguratorModuleCubeProvider(cubeConfigurationService);
         }
         public void Initialize()
         {
-            _viewRegistry.RegisterViewWithRegion("solver", typeof(CubeRunnerView));
+            CubeRunnerPanelVM panelVm = new CubeRunnerPanelVM(new CubeRunnerFactory(_cubeProvider));
+            _viewRegistry.RegisterViewWithRegion("solver", new Func<object>(() => new CubeRunnerPanel(){DataContext = panelVm}));
         }
     }
 }
