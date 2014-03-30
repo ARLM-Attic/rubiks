@@ -73,14 +73,16 @@ namespace RubiksUIControls
 
         private void PopulateCube()
         {
+            _cubeGrid.RowDefinitions.Clear();
+            _cubeGrid.ColumnDefinitions.Clear();
             for(int row = 0; row < Cube.CubeSize * 3; row++)
             {
-                _cubeGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(_gridSquareSize) });
+                _cubeGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1.0/(Cube.CubeSize * 3), GridUnitType.Star) });
             }
 
             for(int column = 0; column < Cube.CubeSize * 4; column++)
             {
-                _cubeGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(_gridSquareSize) });
+                _cubeGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1.0/(Cube.CubeSize * 4), GridUnitType.Star) });
             }
 
             foreach(TwoDPosition position in CreatePositionsForCube())
