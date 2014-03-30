@@ -3,8 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Rubiks App" Height="350" Width="525"
         xmlns:Prism="http://www.codeplex.com/prism">
-    <TabControl>
-        <TabItem Header="Cube Configurator" Prism:RegionManager.RegionName="cubeConfigurator"/>
-        <TabItem Header="Solver" Prism:RegionManager.RegionName="solver"/>
-    </TabControl>
+    <Grid>
+        <!--<TabItem Header="Cube Configurator" Prism:RegionManager.RegionName="cubeConfigurator"/>
+        <TabItem Header="Solver" Prism:RegionManager.RegionName="solver"/>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".70*"/>
+            <ColumnDefinition Width=".30*"/>
+        </Grid.ColumnDefinitions>
+        
+        <ContentControl Grid.Column="0" Prism:RegionManager.RegionName="cubeConfigurator"/>
+        <ContentControl Grid.Column="1" Prism:RegionManager.RegionName="solver"/>
+    </Grid>
 </Window>

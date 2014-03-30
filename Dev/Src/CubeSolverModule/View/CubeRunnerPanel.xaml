@@ -18,8 +18,8 @@
             <ColumnDefinition Width=".5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height=".15*"/>
-            <RowDefinition Height=".85*"/>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".9*"/>
         </Grid.RowDefinitions>
         <Button x:Name="btnBrowse" Grid.Row="0" Grid.Column="0" Command="{Binding BrowseCommand}">Browse</Button>
         <Button x:Name="btnClear" Grid.Row="0" Grid.Column="1" Command="{Binding ClearCommand}">Clear</Button>
