@@ -33,7 +33,7 @@ namespace CubeSolverModule.View
             set
             {
                 _lastRunsResult = value;
-
+                OnPropertyChanged("LastRunsResult");
             }
         }
 
