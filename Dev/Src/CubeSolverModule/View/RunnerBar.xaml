@@ -34,7 +34,7 @@
                                         Path=ActualWidth, 
                                         Converter={StaticResource addSubtractConverter}, 
                                         ConverterParameter=-45}"
-                                        Background="White" FontFamily="Segoe UI Light, Lucida Sans Unicode, Verdana" 
+                                        FontFamily="Segoe UI Light, Lucida Sans Unicode, Verdana" 
                                         Foreground="White">
                     <Grid>
                         <Grid.RowDefinitions>
