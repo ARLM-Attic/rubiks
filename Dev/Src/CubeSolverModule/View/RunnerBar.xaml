@@ -33,7 +33,9 @@
                                         AncestorType={x:Type Expander}},
                                         Path=ActualWidth, 
                                         Converter={StaticResource addSubtractConverter}, 
-                                        ConverterParameter=-45}">
+                                        ConverterParameter=-45}"
+                                        Background="White" FontFamily="Segoe UI Light, Lucida Sans Unicode, Verdana" 
+                                        Foreground="White">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height=".2*"/>
