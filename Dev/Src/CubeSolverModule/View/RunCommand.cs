@@ -26,7 +26,9 @@ namespace CubeSolverModule.View
 
         public void Execute(object parameter)
         {
-            _runnerBarVM.LastRunsResult = _runner.Run();
+            SolverResult result = _runner.Run();
+            _runnerBarVM.LastRunsResult = result;
+            _runnerBarVM.AllResults.Add(result);
         }
     }
 }

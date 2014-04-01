@@ -78,6 +78,15 @@
                     </Grid>
                 </HeaderedContentControl>
             </Expander.Header>
+            <ListView ItemsSource="{Binding AllResults}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding WasCubeSolved}" Header="Was Cube Solved?" />
+                        <GridViewColumn DisplayMemberBinding="{Binding MovesToCompletion}" Header="Moves to Complete"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding TimeToCompletion.TotalMilliseconds}" Header="Time to Complete (ms)"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Expander>
     </DataTemplate>
 </ResourceDictionary>

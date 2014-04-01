@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,8 @@ namespace CubeSolverModule.View
     {
         #region Instance Variables
 
-        private SolverResult _lastRunsResult;
+        SolverResult _lastRunsResult;
+        ObservableCollection<SolverResult> _allResults = new ObservableCollection<SolverResult>();
 
         #endregion
 
@@ -34,6 +36,19 @@ namespace CubeSolverModule.View
             {
                 _lastRunsResult = value;
                 OnPropertyChanged("LastRunsResult");
+            }
+        }
+
+        public ObservableCollection<SolverResult> AllResults
+        {
+            get
+            {
+                return _allResults;
+            }
+            set
+            {
+                _allResults = value;
+                OnPropertyChanged("AllResults");
             }
         }
 
