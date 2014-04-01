@@ -33,7 +33,7 @@
                                         AncestorType={x:Type Expander}},
                                         Path=ActualWidth, 
                                         Converter={StaticResource addSubtractConverter}, 
-                                        ConverterParameter=-28}">
+                                        ConverterParameter=-45}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height=".2*"/>
