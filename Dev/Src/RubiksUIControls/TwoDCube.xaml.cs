@@ -21,8 +21,6 @@ namespace RubiksUIControls
     /// </summary>
     public partial class TwoDCube : UserControl
     {
-        private int _gridSquareSize = 50;
-
         public TwoDCube()
         {
             InitializeComponent();
