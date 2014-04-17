@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="B7392B23-AB67-499D-BD2B-F4E82ECDD44B" Name="Rubiks Benchmarking App" Language="1033" Version="0.0.0.1" Manufacturer="Daniel Sandberg" UpgradeCode="EC5FF260-982E-4158-AF2F-5621DA9D585C">
+		<Package Id="*" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="RubiksBenchmarkingAppSetup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentGroupRef Id="ModulesComponentGroup"/>
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Rubiks Benchmarking App">
+          <Directory Id="MODULES" Name="Modules"/>
+        </Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			 <Component Id="ShellComponent" Guid="2FBB083C-36A6-4B4A-AD8E-E331425DF213">
+         <File Source="$(var.RubiksShell.TargetDir)\RubiksShell.exe" KeyPath="yes"/>
+         <File Source="$(var.RubiksShell.TargetDir)\RubiksShell.exe.config" KeyPath="no"/>
+         <File Source="$(var.RubiksShell.TargetDir)\MahApps.Metro.dll" KeyPath="no"/>
+         <File Source="$(var.RubiksShell.TargetDir)\Microsoft.Expression.Interactions.dll" KeyPath="no"/>
+         <File Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.dll" KeyPath="no"/>
+         <File Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.Interactivity.dll" KeyPath="no"/>
+         <File Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.UnityExtensions.dll" KeyPath="no"/>
+         <File Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.ServiceLocation.dll" KeyPath="no"/>
+         <File Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Unity.Configuration.dll" KeyPath="no"/>
+         <File Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Unity.dll" KeyPath="no"/>
+         <File Source="$(var.RubiksShell.TargetDir)\System.Windows.Interactivity.dll" KeyPath="no"/>
+			 </Component>
+		</ComponentGroup>
+    <ComponentGroup Id="ModulesComponentGroup" Directory="MODULES">
+      <Component Id="Module1" Guid="0F4CDEB3-25BE-482C-9F63-E64847BEB1E7">
+        <CreateFolder/>
+      </Component>
+    </ComponentGroup>
+	</Fragment>
+</Wix>
