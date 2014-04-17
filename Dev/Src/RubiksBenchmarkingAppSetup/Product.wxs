@@ -9,11 +9,15 @@
 		<Feature Id="ProductFeature" Title="RubiksBenchmarkingAppSetup" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="ModulesComponentGroup"/>
+      <ComponentGroupRef Id="StartMenuShortcuts"/>
 		</Feature>
 	</Product>
 
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Rubiks Benchmarking App"/>
+      </Directory>
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLFOLDER" Name="Rubiks Benchmarking App">
           <Directory Id="MODULES" Name="Modules"/>
@@ -41,6 +45,18 @@
     <ComponentGroup Id="ModulesComponentGroup" Directory="MODULES">
       <Component Id="Module1" Guid="0F4CDEB3-25BE-482C-9F63-E64847BEB1E7">
         <CreateFolder/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="StartMenuShortcuts" Directory="ApplicationProgramsFolder">
+      <Component Id="ShellShortcut" Guid="BE4D5240-2424-4EA1-A5EF-0DAB0F018C29">
+        <Shortcut
+          Id="ShellMenuShortcut"
+          Name="Rubiks Benchmarking App"
+          Description="An app to create and benchmark algorithms to solve Rubiks Cube."
+          Target="[#RubiksShell.exe]"
+          WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="ShellMenuShortcutRemove" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\RubiksBenchmarkingApp" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
     </ComponentGroup>
 	</Fragment>
