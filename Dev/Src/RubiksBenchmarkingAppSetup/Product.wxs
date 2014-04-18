@@ -45,6 +45,8 @@
     <ComponentGroup Id="ModulesComponentGroup" Directory="MODULES">
       <Component Id="ShellModules" Guid="0F4CDEB3-25BE-482C-9F63-E64847BEB1E7">
         <File Source="$(var.CubeConfiguratorModule.TargetDir)\CubeConfiguratorModule.dll" KeyPath="yes"/>
+        <File Source="$(var.CubeSolverModule.TargetDir)\CubeSolverModule.dll" KeyPath="no"/>
+        <File Source="$(var.CubeSolverModule.TargetDir)\RubiksAlgorithmToolset.dll" KeyPath="no"/>
         <File Id="expressionModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Expression.Interactions.dll" KeyPath="no"/>
         <File Id="prismModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Prism.dll" KeyPath="no"/>
         <File Id="prismInteractivityModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Prism.Interactivity.dll" KeyPath="no"/>
