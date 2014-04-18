@@ -11,6 +11,8 @@
       <ComponentGroupRef Id="ModulesComponentGroup"/>
       <ComponentGroupRef Id="StartMenuShortcuts"/>
 		</Feature>
+
+    <UIRef Id="WixUI_Minimal" />
 	</Product>
 
 	<Fragment>
