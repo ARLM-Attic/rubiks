@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        Title="Rubiks App" Height="350" Width="525" ResizeMode="CanResizeWithGrip"
-        xmlns:Prism="http://www.codeplex.com/prism" >
+        Title="Rubiks Benchmarking App" Height="350" Width="525" ResizeMode="CanResizeWithGrip"
+        xmlns:Prism="http://www.codeplex.com/prism" Icon="cube.ico" ShowIconOnTitleBar="False">
     <Grid>
         <!--<TabItem Header="Cube Configurator" Prism:RegionManager.RegionName="cubeConfigurator"/>
         <TabItem Header="Solver" Prism:RegionManager.RegionName="solver"/>-->
