@@ -12,6 +12,7 @@
       <ComponentGroupRef Id="StartMenuShortcuts"/>
 		</Feature>
 
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.RubiksShell.TargetDir)\license.rtf"/>
     <UIRef Id="WixUI_Minimal" />
 	</Product>
 
