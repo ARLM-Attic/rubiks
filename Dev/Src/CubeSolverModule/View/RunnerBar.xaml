@@ -27,56 +27,21 @@
     <DataTemplate x:Key="runnerBar">
         <Expander>
             <Expander.Header>
-                <HeaderedContentControl Width="{Binding
-                                        RelativeSource={RelativeSource
-                                        Mode=FindAncestor,
-                                        AncestorType={x:Type Expander}},
-                                        Path=ActualWidth, 
-                                        Converter={StaticResource addSubtractConverter}, 
-                                        ConverterParameter=-45}"
-                                        FontFamily="Segoe UI Light, Lucida Sans Unicode, Verdana" 
-                                        Foreground="White">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height=".2*"/>
-                            <RowDefinition Height=".2*"/>
-                            <RowDefinition Height=".6*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".1*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width=".4*"/>
-                        </Grid.ColumnDefinitions>
-                        <ContentControl Grid.Column="0" Grid.RowSpan="3">
-                            <ContentControl.Template>
-                                <ControlTemplate TargetType="ContentControl">
-                                    <ControlTemplate.Triggers>
-                                        <DataTrigger Binding="{Binding LastRunsResult}" Value="{x:Null}">
-                                            <DataTrigger.Setters>
-                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                            </DataTrigger.Setters>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding LastRunsResult.WasCubeSolved}" Value="True">
-                                            <DataTrigger.Setters>
-                                                <Setter Property="Content" Value="{StaticResource checkmark}"/>
-                                            </DataTrigger.Setters>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding LastRunsResult.WasCubeSolved}" Value="False">
-                                            <DataTrigger.Setters>
-                                                <Setter Property="Content" Value="{StaticResource xmark}"/>
-                                            </DataTrigger.Setters>
-                                        </DataTrigger>
-                                    </ControlTemplate.Triggers>
-                                    <ContentPresenter />
-                                </ControlTemplate>
-                            </ContentControl.Template>
-                        </ContentControl>
-                        <TextBlock Text="{Binding Runner.AlgorithmName}" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap"/>
-                        <TextBlock Text="{Binding Runner.AlgorithmAuthor}" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap"/>
-                        <TextBlock Text="{Binding Runner.AlgorithmDescription}" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap"/>
-                        <Button Content="Run" Command="{Binding RunCommand}" Grid.Column="2" Grid.RowSpan="3"/>
-                    </Grid>
-                </HeaderedContentControl>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".2*"/>
+                        <RowDefinition Height=".2*"/>
+                        <RowDefinition Height=".6*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".6*"/>
+                        <ColumnDefinition Width=".4*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Runner.AlgorithmName}" Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" Foreground="White" />
+                    <TextBlock Text="{Binding Runner.AlgorithmAuthor}" Grid.Column="0" Grid.Row="1" TextWrapping="Wrap" Foreground="White"/>
+                    <TextBlock Text="{Binding Runner.AlgorithmDescription}" Grid.Column="0" Grid.Row="2" TextWrapping="Wrap" Foreground="White"/>
+                    <Button Content="Run" Command="{Binding RunCommand}" Grid.Column="1" Grid.RowSpan="3"/>
+                </Grid>
             </Expander.Header>
             <ListView ItemsSource="{Binding AllResults}">
                 <ListView.View>
