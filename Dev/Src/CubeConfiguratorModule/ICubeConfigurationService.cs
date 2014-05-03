@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CubeConfiguratorModule
+namespace RubiksApp.CubeConfiguratorModule
 {
     /// <summary>
     /// Provides the ability to access and modify the cube that is currently under configuration

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CubeConfiguratorModule
+namespace RubiksApp.CubeConfiguratorModule
 {
     /// <summary>
     /// Interaction logic for CubeConfiguratorControl.xaml

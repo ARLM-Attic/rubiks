@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CubeConfiguratorModule
+namespace RubiksApp.CubeConfiguratorModule
 {
     [Module(ModuleName="CubeConfiguratorModule")]
     public class CubeConfiguratorModule : IModule

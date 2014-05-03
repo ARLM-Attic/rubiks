@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CubeConfiguratorModule
+namespace RubiksApp.CubeConfiguratorModule
 {
     public class CubeConfigurationService : ICubeConfigurationService
     {

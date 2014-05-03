@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CubeSolverModule.View;
-using CubeConfiguratorModule;
+using RubiksApp.CubeConfiguratorModule;
 
 namespace CubeSolverModule
 {

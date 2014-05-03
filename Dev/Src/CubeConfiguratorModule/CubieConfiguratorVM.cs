@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace CubeConfiguratorModule
+namespace RubiksApp.CubeConfiguratorModule
 {
     public class CubieConfiguratorVM : INotifyPropertyChanged
     {

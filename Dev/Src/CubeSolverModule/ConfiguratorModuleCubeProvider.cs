@@ -1,4 +1,4 @@
-﻿using CubeConfiguratorModule;
+﻿using RubiksApp.CubeConfiguratorModule;
 using RubiksCore;
 using System;
 using System.Collections.Generic;
