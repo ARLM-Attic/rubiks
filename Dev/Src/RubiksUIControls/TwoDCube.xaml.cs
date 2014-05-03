@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RubiksUIControls
+namespace RubiksCore.RubiksUIControls
 {
     /// <summary>
     /// Interaction logic for TwoDCube.xaml

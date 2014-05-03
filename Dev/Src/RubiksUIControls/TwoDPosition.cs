@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RubiksUIControls
+namespace RubiksCore.RubiksUIControls
 {
     public struct TwoDPosition
     {

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             xmlns:RubiksControls="clr-namespace:RubiksUIControls;assembly=RubiksUIControls">
+             xmlns:RubiksControls="clr-namespace:RubiksCore.RubiksUIControls;assembly=RubiksUIControls">
     <DockPanel LastChildFill="True">
         
         <Grid DockPanel.Dock="Bottom">

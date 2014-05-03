@@ -7,7 +7,7 @@
     <ProjectGuid>{457A4BE9-7662-4571-8E42-D0E20CBC7FED}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RubiksUIControls</RootNamespace>
+    <RootNamespace>RubiksCore.RubiksUIControls</RootNamespace>
     <AssemblyName>RubiksUIControls</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
