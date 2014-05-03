@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace CubeSolverModule.View
+namespace RubiksApp.CubeSolverModule.View
 {
     public class AddSubtractConverter : IValueConverter
     {

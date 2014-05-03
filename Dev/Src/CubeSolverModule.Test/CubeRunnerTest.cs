@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RubiksCore;
 using Moq;
 using RubiksApp.RubiksAlgorithmToolset;
+using RubiksApp.CubeSolverModule;
 
 namespace CubeSolverModule.Test
 {

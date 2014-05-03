@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CubeSolverModule.View
+namespace RubiksApp.CubeSolverModule.View
 {
     /// <summary>
     /// Interaction logic for CubeRunnerPanel.xaml

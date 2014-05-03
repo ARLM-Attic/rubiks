@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace CubeSolverModule.View
+namespace RubiksApp.CubeSolverModule.View
 {
     public class CubeRunnerPanelVM
     {

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CubeSolverModule
+namespace RubiksApp.CubeSolverModule
 {
     public class CubeRunner : INotifyPropertyChanged
     {

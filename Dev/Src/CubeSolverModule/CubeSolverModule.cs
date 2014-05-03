@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CubeSolverModule.View;
+using RubiksApp.CubeSolverModule.View;
 using RubiksApp.CubeConfiguratorModule;
 
-namespace CubeSolverModule
+namespace RubiksApp.CubeSolverModule
 {
     [Module(ModuleName="CubeSolverModule")]
     [ModuleDependency("CubeConfiguratorModule")]

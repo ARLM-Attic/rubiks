@@ -7,7 +7,7 @@
     <ProjectGuid>{5EA72448-52D7-48D9-AFF7-438B75BE5B09}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CubeSolverModule</RootNamespace>
+    <RootNamespace>RubiksApp.CubeSolverModule</RootNamespace>
     <AssemblyName>CubeSolverModule</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
