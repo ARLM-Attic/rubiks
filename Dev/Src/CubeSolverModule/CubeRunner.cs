@@ -1,5 +1,5 @@
-﻿using RubiksCore;
-using RubiksCore.RubiksAlgorithmToolset;
+﻿using RubiksApp.RubiksAlgorithmToolset;
+using RubiksCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

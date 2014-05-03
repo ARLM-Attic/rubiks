@@ -1,10 +1,11 @@
-﻿using System;
+﻿using RubiksCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RubiksCore.RubiksAlgorithmToolset
+namespace RubiksApp.RubiksAlgorithmToolset
 {
     public interface ICubeSolvingAlgorithm
     {

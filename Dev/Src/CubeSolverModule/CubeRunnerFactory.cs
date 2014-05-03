@@ -1,4 +1,4 @@
-﻿using RubiksCore.RubiksAlgorithmToolset;
+﻿using RubiksApp.RubiksAlgorithmToolset;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace CubeSolverModule
             return CreateCubeRunners(algorithms);
         }
 
-        public IEnumerable<CubeRunner> CreateCubeRunners(IEnumerable<RubiksCore.RubiksAlgorithmToolset.ICubeSolvingAlgorithm> algorithms)
+        public IEnumerable<CubeRunner> CreateCubeRunners(IEnumerable<ICubeSolvingAlgorithm> algorithms)
         {
             return algorithms.Select(alg => new CubeRunner(_cubeProvider.ProvideCube(), alg)).ToArray();
         }

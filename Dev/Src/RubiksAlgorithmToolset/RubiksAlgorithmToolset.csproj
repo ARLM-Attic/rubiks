@@ -7,7 +7,7 @@
     <ProjectGuid>{1DC2507D-13C7-4FE6-8102-716438487F0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RubiksCore.RubiksAlgorithmToolset</RootNamespace>
+    <RootNamespace>RubiksApp.RubiksAlgorithmToolset</RootNamespace>
     <AssemblyName>RubiksAlgorithmToolset</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

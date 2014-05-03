@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RubiksCore;
-using RubiksCore.RubiksAlgorithmToolset;
 using Moq;
+using RubiksApp.RubiksAlgorithmToolset;
 
 namespace CubeSolverModule.Test
 {
