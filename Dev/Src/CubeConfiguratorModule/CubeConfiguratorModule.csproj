@@ -54,6 +54,10 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="RubiksCore, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RubiksCore.1.0.0.1\lib\net45\RubiksCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -88,10 +92,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RubiksCore\RubiksCore.csproj">
-      <Project>{151dc531-e471-4ab7-a1af-a3fbb3f162d5}</Project>
-      <Name>RubiksCore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RubiksUIControls\RubiksUIControls.csproj">
       <Project>{457a4be9-7662-4571-8e42-d0e20cbc7fed}</Project>
       <Name>RubiksUIControls</Name>

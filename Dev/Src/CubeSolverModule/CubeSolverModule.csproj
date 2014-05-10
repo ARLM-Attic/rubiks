@@ -51,6 +51,14 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="RubiksAlgorithmToolset, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RubiksAlgorithmToolset.1.0.0.1\lib\net45\RubiksAlgorithmToolset.dll</HintPath>
+    </Reference>
+    <Reference Include="RubiksCore, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RubiksCore.1.0.0.1\lib\net45\RubiksCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -91,14 +99,6 @@
     <ProjectReference Include="..\CubeConfiguratorModule\CubeConfiguratorModule.csproj">
       <Project>{65a4ddf4-3186-4a5f-995d-10b556a50d44}</Project>
       <Name>CubeConfiguratorModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RubiksAlgorithmToolset\RubiksAlgorithmToolset.csproj">
-      <Project>{1dc2507d-13c7-4fe6-8102-716438487f0c}</Project>
-      <Name>RubiksAlgorithmToolset</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RubiksCore\RubiksCore.csproj">
-      <Project>{151dc531-e471-4ab7-a1af-a3fbb3f162d5}</Project>
-      <Name>RubiksCore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
