@@ -35,14 +35,18 @@
          <File Source="$(var.RubiksShell.TargetDir)\RubiksShell.exe" KeyPath="yes"/>
          <File Source="$(var.RubiksShell.TargetDir)\RubiksShell.exe.config" KeyPath="no"/>
          <File Source="$(var.RubiksShell.TargetDir)\MahApps.Metro.dll" KeyPath="no"/>
-         <File Id="expressionShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Expression.Interactions.dll" KeyPath="no"/>
-         <File Id="prismShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.dll" KeyPath="no"/>
          <File Id="prismInteractivityShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.Interactivity.dll" KeyPath="no"/>
          <File Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.UnityExtensions.dll" KeyPath="no"/>
          <File Id="serviceLocationShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.ServiceLocation.dll" KeyPath="no"/>
          <File Id="unityConfigurationShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Unity.Configuration.dll" KeyPath="no"/>
          <File Id="unityShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Unity.dll" KeyPath="no"/>
          <File Id="systemWindowsInteractivityShell" Source="$(var.RubiksShell.TargetDir)\System.Windows.Interactivity.dll" KeyPath="no"/>
+         <File Id="prismCompositionShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.Composition.dll" KeyPath="no"/>
+         <File Id="prismMvvmDesktopShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.Mvvm.Desktop.dll" KeyPath="no"/>
+         <File Id="prismMvvmShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.Mvvm.dll" KeyPath="no"/>
+         <File Id="prismPubSubEventsShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.PubSubEvents.dll" KeyPath="no"/>
+         <File Id="prismSharedInterfacesShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Prism.SharedInterfaces.dll" KeyPath="no"/>
+         <File Id="unityRegistrationByConventionShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Unity.RegistrationByConvention.dll" KeyPath="no"/>
 			 </Component>
 		</ComponentGroup>
     <ComponentGroup Id="ModulesComponentGroup" Directory="MODULES">
@@ -50,8 +54,6 @@
         <File Source="$(var.CubeConfiguratorModule.TargetDir)\CubeConfiguratorModule.dll" KeyPath="yes"/>
         <File Source="$(var.CubeSolverModule.TargetDir)\CubeSolverModule.dll" KeyPath="no"/>
         <File Source="$(var.CubeSolverModule.TargetDir)\RubiksAlgorithmToolset.dll" KeyPath="no"/>
-        <File Id="expressionModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Expression.Interactions.dll" KeyPath="no"/>
-        <File Id="prismModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Prism.dll" KeyPath="no"/>
         <File Id="prismInteractivityModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Prism.Interactivity.dll" KeyPath="no"/>
         <File Id="serviceLocationModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.ServiceLocation.dll" KeyPath="no"/>
         <File Id="unityConfigurationModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Unity.Configuration.dll" KeyPath="no"/>
@@ -59,6 +61,12 @@
         <File Source="$(var.CubeConfiguratorModule.TargetDir)\RubiksCore.dll" KeyPath="no"/>
         <File Source="$(var.CubeConfiguratorModule.TargetDir)\RubiksUIControls.dll" KeyPath="no"/>
         <File  Id="systemWindowsInteractivityModules" Source="$(var.CubeConfiguratorModule.TargetDir)\System.Windows.Interactivity.dll" KeyPath="no"/>
+        <File Id="prismCompositionModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Prism.Composition.dll" KeyPath="no"/>
+        <File Id="prismMvvmDesktopModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Prism.Mvvm.Desktop.dll" KeyPath="no"/>
+        <File Id="prismMvvmModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Prism.Mvvm.dll" KeyPath="no"/>
+        <File Id="prismPubSubEventsModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Prism.PubSubEvents.dll" KeyPath="no"/>
+        <File Id="prismSharedInterfacesModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Prism.SharedInterfaces.dll" KeyPath="no"/>
+        <File Id="unityRegistrationByConventionModules" Source="$(var.CubeConfiguratorModule.TargetDir)\Microsoft.Practices.Unity.RegistrationByConvention.dll" KeyPath="no"/>
       </Component>
     </ComponentGroup>
     <ComponentGroup Id="StartMenuShortcuts" Directory="ApplicationProgramsFolder">
