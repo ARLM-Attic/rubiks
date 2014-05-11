@@ -4,6 +4,11 @@
         xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         Title="Rubiks Benchmarking App" Height="350" Width="525" ResizeMode="CanResizeWithGrip"
         xmlns:Prism="http://www.codeplex.com/prism" Icon="cube.ico" ShowIconOnTitleBar="False">
+    <metro:MetroWindow.WindowCommands>
+        <metro:WindowCommands>
+            <Button Content="Quick Start" Command="{Binding QuickStartCommand}"/>
+        </metro:WindowCommands>
+    </metro:MetroWindow.WindowCommands>
     <Grid>
         <!--<TabItem Header="Cube Configurator" Prism:RegionManager.RegionName="cubeConfigurator"/>
         <TabItem Header="Solver" Prism:RegionManager.RegionName="solver"/>-->

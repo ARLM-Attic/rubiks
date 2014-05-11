@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="B7392B23-AB67-499D-BD2B-F4E82ECDD44B" Name="Rubiks Benchmarking App" Language="1033" Version="0.0.0.1" Manufacturer="Daniel Sandberg" UpgradeCode="EC5FF260-982E-4158-AF2F-5621DA9D585C">
+	<Product Id="B7392B23-AB67-499D-BD2B-F4E82ECDD44B" Name="Rubiks Benchmarking App" Language="1033" Version="1.0.0.0" Manufacturer="Daniel Sandberg" UpgradeCode="EC5FF260-982E-4158-AF2F-5621DA9D585C">
 		<Package Id="*" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -10,6 +10,7 @@
 			<ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="ModulesComponentGroup"/>
       <ComponentGroupRef Id="StartMenuShortcuts"/>
+      <ComponentGroupRef Id="quickStartGuide"/>
 		</Feature>
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.RubiksShell.TargetDir)\license.rtf"/>
@@ -24,6 +25,7 @@
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLFOLDER" Name="Rubiks Benchmarking App">
           <Directory Id="MODULES" Name="Modules"/>
+          <Directory Id="QUICKSTARTDOCS" Name="QuickStartGuide"/>
         </Directory>
 			</Directory>
 		</Directory>
@@ -49,6 +51,21 @@
          <File Id="unityRegistrationByConventionShell" Source="$(var.RubiksShell.TargetDir)\Microsoft.Practices.Unity.RegistrationByConvention.dll" KeyPath="no"/>
 			 </Component>
 		</ComponentGroup>
+    <ComponentGroup Id="quickStartGuide" Directory="QUICKSTARTDOCS">
+      <Component Id="quickStartGuideComponent" Guid="181159D6-E8AF-4DE5-8741-40ECB173507D">
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\metro-bootstrap.css" KeyPath="no"/>
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\QuickStart.html" KeyPath="yes"/>
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\vbAfterCopyPaste.PNG" KeyPath="no"/>
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\vbAlgorithmRun.PNG" KeyPath="no"/>
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\vbDllFolder.PNG" KeyPath="no"/>
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\vbGettingDll.PNG" KeyPath="no"/>
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\vbNewProject.PNG" KeyPath="no"/>
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\vbNewProjectScreen.PNG" KeyPath="no"/>
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\vbNugetManager.PNG" KeyPath="no"/>
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\vbNugetManagerInstalled.PNG" KeyPath="no"/>
+        <File Source="$(var.RubiksShell.TargetDir)\QuickStartGuide\vbRenamedFile.PNG" KeyPath="no"/>
+      </Component>
+    </ComponentGroup>
     <ComponentGroup Id="ModulesComponentGroup" Directory="MODULES">
       <Component Id="ShellModules" Guid="0F4CDEB3-25BE-482C-9F63-E64847BEB1E7">
         <File Source="$(var.CubeConfiguratorModule.TargetDir)\CubeConfiguratorModule.dll" KeyPath="yes"/>

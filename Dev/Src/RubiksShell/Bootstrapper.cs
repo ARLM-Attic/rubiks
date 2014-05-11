@@ -19,6 +19,7 @@ namespace RubiksApp
 
         protected override void InitializeShell()
         {
+            ((Window)Shell).DataContext = new ShellVM() { QuickStartCommand = new QuickStartCommand() };
             Application.Current.MainWindow = (Window)Shell;
             Application.Current.MainWindow.Show();
         }
