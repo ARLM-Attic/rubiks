@@ -33,9 +33,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeSolverModule.Test", "Cu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{878B276C-B3FC-4022-A5B0-45CC08A27362}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RubiksBenchmarkingAppSetup", "RubiksBenchmarkingAppSetup\RubiksBenchmarkingAppSetup.wixproj", "{43CF235E-1673-4A2D-A8E0-94F5E9E69B1F}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RAlgorithmSetup", "RubiksBenchmarkingAppSetup\RAlgorithmSetup.wixproj", "{43CF235E-1673-4A2D-A8E0-94F5E9E69B1F}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RubiksInstaller", "RubiksInstaller\RubiksInstaller.wixproj", "{621D8BCC-DAF5-4CCD-AF77-8CD702680F97}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "RAlgorithmBootstrapper", "RubiksInstaller\RAlgorithmBootstrapper.wixproj", "{621D8BCC-DAF5-4CCD-AF77-8CD702680F97}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -79,18 +79,17 @@ Global
 		SccProjectName9 = CubeSolverModule
 		SccLocalPath9 = CubeSolverModule
 		SccProjectUniqueName10 = RubiksAlgorithmToolset\\RubiksAlgorithmToolset.csproj
-		SccProjectTopLevelParentUniqueName10 = Rubiks.sln
 		SccProjectName10 = RubiksAlgorithmToolset
 		SccLocalPath10 = RubiksAlgorithmToolset
 		SccProjectUniqueName11 = CubeSolverModule.Test\\CubeSolverModule.Test.csproj
 		SccProjectTopLevelParentUniqueName11 = Rubiks.sln
 		SccProjectName11 = CubeSolverModule.Test
 		SccLocalPath11 = CubeSolverModule.Test
-		SccProjectUniqueName12 = RubiksBenchmarkingAppSetup\\RubiksBenchmarkingAppSetup.wixproj
+		SccProjectUniqueName12 = RubiksBenchmarkingAppSetup\\RAlgorithmSetup.wixproj
 		SccProjectTopLevelParentUniqueName12 = Rubiks.sln
 		SccProjectName12 = RubiksBenchmarkingAppSetup
 		SccLocalPath12 = RubiksBenchmarkingAppSetup
-		SccProjectUniqueName13 = RubiksInstaller\\RubiksInstaller.wixproj
+		SccProjectUniqueName13 = RubiksInstaller\\RAlgorithmBootstrapper.wixproj
 		SccProjectTopLevelParentUniqueName13 = Rubiks.sln
 		SccProjectName13 = RubiksInstaller
 		SccLocalPath13 = RubiksInstaller

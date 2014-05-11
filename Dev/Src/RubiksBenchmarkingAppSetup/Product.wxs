@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="B7392B23-AB67-499D-BD2B-F4E82ECDD44B" Name="Rubiks Benchmarking App" Language="1033" Version="1.0.0.0" Manufacturer="Daniel Sandberg" UpgradeCode="EC5FF260-982E-4158-AF2F-5621DA9D585C">
+	<Product Id="B7392B23-AB67-499D-BD2B-F4E82ECDD44B" Name="RAlgorithm" Language="1033" Version="1.0.0.0" Manufacturer="Daniel Sandberg" UpgradeCode="EC5FF260-982E-4158-AF2F-5621DA9D585C">
 		<Package Id="*" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate EmbedCab="yes"/>
 
-		<Feature Id="ProductFeature" Title="RubiksBenchmarkingAppSetup" Level="1">
+		<Feature Id="ProductFeature" Title="RAlgorithmSetup" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
       <ComponentGroupRef Id="ModulesComponentGroup"/>
       <ComponentGroupRef Id="StartMenuShortcuts"/>
@@ -20,10 +20,10 @@
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="Rubiks Benchmarking App"/>
+        <Directory Id="ApplicationProgramsFolder" Name="RAlgorithm"/>
       </Directory>
 			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="Rubiks Benchmarking App">
+				<Directory Id="INSTALLFOLDER" Name="RAlgorithm">
           <Directory Id="MODULES" Name="Modules"/>
           <Directory Id="QUICKSTARTDOCS" Name="QuickStartGuide"/>
         </Directory>
@@ -90,12 +90,12 @@
       <Component Id="ShellShortcut" Guid="BE4D5240-2424-4EA1-A5EF-0DAB0F018C29">
         <Shortcut
           Id="ShellMenuShortcut"
-          Name="Rubiks Benchmarking App"
+          Name="RAlgorithm"
           Description="An app to create and benchmark algorithms to solve Rubiks Cube."
           Target="[#RubiksShell.exe]"
           WorkingDirectory="INSTALLFOLDER"/>
         <RemoveFolder Id="ShellMenuShortcutRemove" On="uninstall"/>
-        <RegistryValue Root="HKCU" Key="Software\Microsoft\RubiksBenchmarkingApp" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\RAlgorithm" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
     </ComponentGroup>
 	</Fragment>
