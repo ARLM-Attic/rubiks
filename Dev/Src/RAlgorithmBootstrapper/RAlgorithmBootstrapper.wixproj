@@ -39,7 +39,7 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RubiksBenchmarkingAppSetup\RAlgorithmSetup.wixproj">
+    <ProjectReference Include="..\RAlgorithmSetup\RAlgorithmSetup.wixproj">
       <Name>RAlgorithmSetup</Name>
       <Project>{43cf235e-1673-4a2d-a8e0-94f5e9e69b1f}</Project>
       <Private>True</Private>
