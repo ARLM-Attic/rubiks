@@ -12,7 +12,7 @@ namespace RubiksApp
     public static class HyperlinkExtensions
     {
         public static readonly DependencyProperty ShouldLaunchBrowserProperty = 
-            DependencyProperty.RegisterAttached("ShouldLaunchBrowser", typeof(bool), typeof(Hyperlink),
+            DependencyProperty.RegisterAttached("ShouldLaunchBrowser", typeof(bool), typeof(HyperlinkExtensions),
             new UIPropertyMetadata(false, OnShouldLaunchBrowserPropertyChanged));
         
         public static bool GetShouldLaunchBrowser(DependencyObject obj)
