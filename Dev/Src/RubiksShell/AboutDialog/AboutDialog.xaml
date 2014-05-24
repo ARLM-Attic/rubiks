@@ -3,16 +3,17 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:base="clr-namespace:RubiksApp"
-        Title="About" Height="300" Width="300" WindowStyle="ToolWindow">
+        Title="About" Height="350" Width="400" WindowStyle="ToolWindow">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height=".4*" />
+            <RowDefinition Height=".3*" />
             <RowDefinition Height=".1*" />
             <RowDefinition Height=".1*" />
             <RowDefinition Height=".1*" />
             <RowDefinition Height=".1*" />
             <RowDefinition Height=".1*" />
             <RowDefinition Height=".1*" />
+            <RowDefinition Height=".1*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <TextBlock HorizontalAlignment="Center">
@@ -35,6 +36,42 @@
             <TextBlock HorizontalAlignment="Center" Grid.Column="1">
                 <Hyperlink NavigateUri="http://compositewpf.codeplex.com/" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
                     http://compositewpf.codeplex.com/
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".3*"/>
+                <ColumnDefinition Width=".7*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="MahApps.Metro" HorizontalAlignment="Center" Grid.Column="0"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+                <Hyperlink NavigateUri="https://github.com/MahApps/MahApps.Metro" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
+                    https://github.com/MahApps/MahApps.Metro
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".3*"/>
+                <ColumnDefinition Width=".7*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Unity" HorizontalAlignment="Center" Grid.Column="0"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+                <Hyperlink NavigateUri="http://unity.codeplex.com/" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
+                    http://unity.codeplex.com/
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".3*"/>
+                <ColumnDefinition Width=".7*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Common Service Locator" HorizontalAlignment="Center" Grid.Column="0" TextWrapping="Wrap"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+                <Hyperlink NavigateUri="http://commonservicelocator.codeplex.com/" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
+                    http://commonservicelocator.codeplex.com/
                 </Hyperlink>
             </TextBlock>
         </Grid>
