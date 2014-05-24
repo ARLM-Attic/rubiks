@@ -17,7 +17,7 @@
             <RowDefinition Height=".1*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <TextBlock HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" FontSize="15">
                 <Run Text="RAlgorithm v."/>
                 <Run Text="{Binding VersionNumber, Mode=OneWay}"/>
             </TextBlock>
@@ -27,74 +27,74 @@
                 </TextBlock.Text>
             </TextBlock>
         </StackPanel>
-        <TextBlock Grid.Row="1" Text="Libraries utilized:"/>
-        <Grid Grid.Row="2">
+        <TextBlock Margin="8,0,0,0" Grid.Row="1" Text="Libraries utilized:"/>
+        <Grid Margin="8,0,0,0" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".3*"/>
                 <ColumnDefinition Width=".7*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Prism" HorizontalAlignment="Center" Grid.Column="0"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+            <TextBlock Text="Prism" Grid.Column="0"/>
+            <TextBlock Grid.Column="1">
                 <Hyperlink NavigateUri="http://compositewpf.codeplex.com/" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
                     http://compositewpf.codeplex.com/
                 </Hyperlink>
             </TextBlock>
         </Grid>
-        <Grid Grid.Row="3">
+        <Grid Margin="8,0,0,0" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".3*"/>
                 <ColumnDefinition Width=".7*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="MahApps.Metro" HorizontalAlignment="Center" Grid.Column="0"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+            <TextBlock Text="MahApps.Metro" Grid.Column="0"/>
+            <TextBlock  Grid.Column="1">
                 <Hyperlink NavigateUri="https://github.com/MahApps/MahApps.Metro" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
                     https://github.com/MahApps/MahApps.Metro
                 </Hyperlink>
             </TextBlock>
         </Grid>
-        <Grid Grid.Row="4">
+        <Grid Margin="8,0,0,0" Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".3*"/>
                 <ColumnDefinition Width=".7*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Unity" HorizontalAlignment="Center" Grid.Column="0"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+            <TextBlock Text="Unity" Grid.Column="0"/>
+            <TextBlock Grid.Column="1">
                 <Hyperlink NavigateUri="http://unity.codeplex.com/" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
                     http://unity.codeplex.com/
                 </Hyperlink>
             </TextBlock>
         </Grid>
-        <Grid Grid.Row="5">
+        <Grid Margin="8,0,0,0" Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".3*"/>
                 <ColumnDefinition Width=".7*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Common Service Locator" HorizontalAlignment="Center" Grid.Column="0" TextWrapping="Wrap"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+            <TextBlock Text="Common Service Locator" Grid.Column="0" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="1">
                 <Hyperlink NavigateUri="http://commonservicelocator.codeplex.com/" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
                     http://commonservicelocator.codeplex.com/
                 </Hyperlink>
             </TextBlock>
         </Grid>
-        <Grid Grid.Row="6">
+        <Grid Margin="8,0,0,0" Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".3*"/>
                 <ColumnDefinition Width=".7*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Moq" HorizontalAlignment="Center" Grid.Column="0" TextWrapping="Wrap"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+            <TextBlock Text="Moq" Grid.Column="0" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="1">
                 <Hyperlink NavigateUri="https://github.com/Moq" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
                     https://github.com/Moq
                 </Hyperlink>
             </TextBlock>
         </Grid>
-        <Grid Grid.Row="7">
+        <Grid Margin="8,0,0,0" Grid.Row="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".3*"/>
                 <ColumnDefinition Width=".7*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Rubiks Core" HorizontalAlignment="Center" Grid.Column="0" TextWrapping="Wrap"/>
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+            <TextBlock Text="Rubiks Core" Grid.Column="0" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="1">
                 <Hyperlink NavigateUri="http://www.nuget.org/packages/RubiksCore/" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
                     http://www.nuget.org/packages/RubiksCore/
                 </Hyperlink>
