@@ -75,5 +75,29 @@
                 </Hyperlink>
             </TextBlock>
         </Grid>
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".3*"/>
+                <ColumnDefinition Width=".7*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Moq" HorizontalAlignment="Center" Grid.Column="0" TextWrapping="Wrap"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+                <Hyperlink NavigateUri="https://github.com/Moq" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
+                    https://github.com/Moq
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".3*"/>
+                <ColumnDefinition Width=".7*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Rubiks Core" HorizontalAlignment="Center" Grid.Column="0" TextWrapping="Wrap"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1">
+                <Hyperlink NavigateUri="http://www.nuget.org/packages/RubiksCore/" base:HyperlinkExtensions.ShouldLaunchBrowser="True">
+                    http://www.nuget.org/packages/RubiksCore/
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
     </Grid>
 </metro:MetroWindow>
