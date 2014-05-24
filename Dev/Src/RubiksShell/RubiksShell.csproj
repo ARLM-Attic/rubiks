@@ -105,6 +105,7 @@
     </Compile>
     <Compile Include="QuickStartCommand.cs" />
     <Compile Include="ShellVM.cs" />
+    <Compile Include="HyperlinkExtensions.cs" />
     <Page Include="AboutDialog\AboutDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
