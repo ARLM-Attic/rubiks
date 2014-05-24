@@ -1,6 +1,7 @@
 ﻿using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.UnityExtensions;
 using Microsoft.Practices.ServiceLocation;
+using RubiksApp.AboutDialog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace RubiksApp
 
         protected override void InitializeShell()
         {
-            ((Window)Shell).DataContext = new ShellVM() { QuickStartCommand = new QuickStartCommand() };
+            ((Window)Shell).DataContext = new ShellVM() { QuickStartCommand = new QuickStartCommand(), AboutCommand = new AboutCommand() };
             Application.Current.MainWindow = (Window)Shell;
             Application.Current.MainWindow.Show();
         }

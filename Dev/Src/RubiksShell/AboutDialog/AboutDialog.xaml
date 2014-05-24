@@ -1,0 +1,28 @@
+﻿<metro:MetroWindow x:Class="RubiksApp.AboutDialog.AboutDialog"
+        xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About" Height="300" Width="300" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".4*" />
+            <RowDefinition Height=".1*" />
+            <RowDefinition Height=".1*" />
+            <RowDefinition Height=".1*" />
+            <RowDefinition Height=".1*" />
+            <RowDefinition Height=".1*" />
+            <RowDefinition Height=".1*" />
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center">
+                <Run Text="RAlgorithm v."/>
+                <Run Text="{Binding VersionNumber, Mode=OneWay}"/>
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    RAlgorithm will allow developers and cubers to create and benchmark solutions to the Rubiks cube. It will facilitate the creation of cube solving algorithms and will allow the user to benchmark them against other algorithms.
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</metro:MetroWindow>

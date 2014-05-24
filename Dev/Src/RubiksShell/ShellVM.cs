@@ -10,5 +10,6 @@ namespace RubiksApp
     public class ShellVM
     {
         public ICommand QuickStartCommand { get; set; }
+        public ICommand AboutCommand { get; set; }
     }
 }

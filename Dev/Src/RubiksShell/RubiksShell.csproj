@@ -98,8 +98,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutDialog\AboutDialogVM.cs" />
+    <Compile Include="AboutDialog\AboutCommand.cs" />
+    <Compile Include="AboutDialog\AboutDialog.xaml.cs">
+      <DependentUpon>AboutDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuickStartCommand.cs" />
     <Compile Include="ShellVM.cs" />
+    <Page Include="AboutDialog\AboutDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

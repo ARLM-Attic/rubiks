@@ -6,6 +6,7 @@
         xmlns:Prism="http://www.codeplex.com/prism" Icon="cube.ico" ShowIconOnTitleBar="False">
     <metro:MetroWindow.WindowCommands>
         <metro:WindowCommands>
+            <Button Content="About" Command="{Binding AboutCommand}"/>
             <Button Content="Quick Start" Command="{Binding QuickStartCommand}"/>
         </metro:WindowCommands>
     </metro:MetroWindow.WindowCommands>
