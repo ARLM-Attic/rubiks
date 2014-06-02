@@ -14,9 +14,7 @@ namespace RubiksApp.CubeConfiguratorModule
 
         public CubeConfigurationService()
         {
-            _cube = new RubiksCube(null);
-            _cube.Shuffle();
-
+            _cube = new RubiksCube();
         }
 
         public RubiksCube GetCube()
