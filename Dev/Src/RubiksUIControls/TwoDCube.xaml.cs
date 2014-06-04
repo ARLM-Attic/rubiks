@@ -73,6 +73,7 @@ namespace RubiksCore.RubiksUIControls
         {
             _cubeGrid.RowDefinitions.Clear();
             _cubeGrid.ColumnDefinitions.Clear();
+            _cubeGrid.Children.Clear();
             for(int row = 0; row < Cube.CubeSize * 3; row++)
             {
                 _cubeGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1.0/(Cube.CubeSize * 3), GridUnitType.Star) });
